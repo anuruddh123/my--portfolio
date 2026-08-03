@@ -14,7 +14,7 @@ const projects = [
     ],
     stack: ["MongoDB", "Express", "React", "Node.js", "Tailwind"],
     github: "https://github.com/anuruddh123/e-commerce-frontend",
-    demo: "trendorasite.netlify.app",
+    demo: "https://try-me-frontend.netlify.app",
     gradient: "from-indigo-600/30 via-blue-600/20 to-transparent",
     emoji: "🛒",
   },
