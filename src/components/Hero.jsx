@@ -113,10 +113,11 @@ export function Hero() {
             </a>
 
             <a
-              href="#"
+              href="/my_resume.pdf"
+              download
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-semibold transition-colors"
             >
-              <Download className="h-4 w-4" />
+            <Download className="h-4 w-4" />
               Download Resume
             </a>
           </motion.div>
