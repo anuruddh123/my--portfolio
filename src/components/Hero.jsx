@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowDown, FolderGit2, Download } from "lucide-react";
+import { useState } from "react";
 
 const container = {
   hidden: { opacity: 0 },
@@ -41,19 +42,36 @@ function LinkedinIcon({ className }) {
 }
 
 export function Hero() {
+  const [isHoveringButton, setIsHoveringButton] = useState(false);
+
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Ambient Background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl" />
+      {/* Fullscreen Background Video */}
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 w-full h-full object-cover z-0"
+      >
+        <source
+          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260314_131748_f2ca2a28-fed7-44c8-b9a9-bd9acdd5ec31.mp4"
+          type="video/mp4"
+        />
+      </video>
 
-        <div className="absolute top-1/3 -right-24 h-96 w-96 rounded-full bg-violet-600/20 blur-3xl" />
+      {/* Dark Overlay for better text visibility */}
+      <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] z-0" />
 
+      {/* Ambient Background Effects */}
+      <div className="pointer-events-none absolute inset-0 z-[1]">
+        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-indigo-600/10 blur-3xl" />
+        <div className="absolute top-1/3 -right-24 h-96 w-96 rounded-full bg-violet-600/10 blur-3xl" />
         <div
-          className="absolute inset-0 opacity-[0.04]"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
               "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
@@ -62,7 +80,7 @@ export function Hero() {
         />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-12 gap-12 items-center">
+      <div className="relative z-10 mx-auto max-w-6xl px-6 w-full grid lg:grid-cols-12 gap-12 items-center pt-16">
         <motion.div
           variants={container}
           initial="hidden"
@@ -71,7 +89,7 @@ export function Hero() {
         >
           <motion.span
             variants={item}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium text-indigo-300 bg-indigo-500/10 border border-indigo-500/20"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium text-indigo-300 bg-indigo-500/20 border border-indigo-500/30 backdrop-blur-sm"
           >
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             Available for entry-level roles
@@ -79,7 +97,7 @@ export function Hero() {
 
           <motion.h1
             variants={item}
-            className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.05]"
+            className="mt-6 font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.05] drop-shadow-lg"
           >
             Hi, I'm{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-violet-400 to-indigo-400 bg-clip-text text-transparent">
@@ -89,14 +107,14 @@ export function Hero() {
 
           <motion.p
             variants={item}
-            className="mt-4 text-xl sm:text-2xl font-semibold text-slate-300"
+            className="mt-4 text-xl sm:text-2xl font-semibold text-slate-200 drop-shadow-md"
           >
             MERN Stack Developer
           </motion.p>
 
           <motion.p
             variants={item}
-            className="mt-5 max-w-xl text-base text-slate-400 leading-relaxed"
+            className="mt-5 max-w-xl text-base text-slate-300 leading-relaxed drop-shadow-sm"
           >
             Passionate Full Stack Developer skilled in building responsive and
             scalable web applications using MongoDB, Express, React, and
@@ -106,7 +124,7 @@ export function Hero() {
           <motion.div variants={item} className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-lg shadow-indigo-600/30 transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold shadow-lg shadow-indigo-600/30 transition-all hover:scale-105"
             >
               <FolderGit2 className="h-4 w-4" />
               View Projects
@@ -115,9 +133,9 @@ export function Hero() {
             <a
               href="/my_resume.pdf"
               download
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-200 text-sm font-semibold transition-colors"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-slate-200 text-sm font-semibold transition-all hover:scale-105"
             >
-            <Download className="h-4 w-4" />
+              <Download className="h-4 w-4" />
               Download Resume
             </a>
           </motion.div>
@@ -130,7 +148,7 @@ export function Hero() {
               href="https://github.com/anuruddh123"
               target="_blank"
               rel="noreferrer"
-              className="grid place-items-center h-10 w-10 rounded-lg bg-white/5 hover:bg-indigo-600/20 border border-white/10 hover:border-indigo-500/40 text-slate-300 hover:text-indigo-300 transition-colors"
+              className="grid place-items-center h-10 w-10 rounded-lg bg-white/10 hover:bg-indigo-600/30 border border-white/20 hover:border-indigo-500/40 text-slate-300 hover:text-indigo-300 transition-all backdrop-blur-sm"
               aria-label="GitHub"
             >
               <GithubIcon className="h-5 w-5" />
@@ -140,7 +158,7 @@ export function Hero() {
               href="https://www.linkedin.com/in/anuruddh-tiwari-2842b232a"
               target="_blank"
               rel="noreferrer"
-              className="grid place-items-center h-10 w-10 rounded-lg bg-white/5 hover:bg-indigo-600/20 border border-white/10 hover:border-indigo-500/40 text-slate-300 hover:text-indigo-300 transition-colors"
+              className="grid place-items-center h-10 w-10 rounded-lg bg-white/10 hover:bg-indigo-600/30 border border-white/20 hover:border-indigo-500/40 text-slate-300 hover:text-indigo-300 transition-all backdrop-blur-sm"
               aria-label="LinkedIn"
             >
               <LinkedinIcon className="h-5 w-5" />
@@ -158,8 +176,8 @@ export function Hero() {
           }}
           className="lg:col-span-5 hidden lg:block"
         >
-          <div className="relative rounded-2xl border border-white/10 bg-slate-900/60 backdrop-blur shadow-2xl shadow-black/40 overflow-hidden">
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/5 bg-slate-900/80">
+          <div className="relative rounded-2xl border border-white/20 bg-slate-900/70 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-slate-900/80">
               <span className="h-3 w-3 rounded-full bg-rose-500/80" />
               <span className="h-3 w-3 rounded-full bg-amber-500/80" />
               <span className="h-3 w-3 rounded-full bg-emerald-500/80" />
@@ -187,10 +205,10 @@ developer.build(); // `}
 
       <a
         href="#about"
-        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-500 hover:text-indigo-400 transition-colors"
+        className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-400 hover:text-indigo-400 transition-colors z-10"
         aria-label="Scroll down"
       >
-        <span className="text-[11px] uppercase tracking-widest">
+        <span className="text-[11px] uppercase tracking-widest drop-shadow-md">
           Scroll
         </span>
 

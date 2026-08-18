@@ -21,23 +21,44 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Smooth scroll handler
+  const handleClick = (e, href) => {
+    e.preventDefault();
+    setOpen(false);
+    
+    const element = document.querySelector(href);
+    if (element) {
+      const offset = 64; // navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  };
+
   return (
     <>
       {/* HEADER */}
       <header
         className={`fixed top-0 w-full z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-slate-950/70 backdrop-blur-xl border-b border-white/10 shadow-xl"
-            : "bg-transparent"
+            ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-xl"
+            : "bg-slate-950/40 backdrop-blur-md"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           
           {/* LOGO */}
-          <a href="#home" className="flex items-center gap-3 group">
+          <a 
+            href="#home" 
+            onClick={(e) => handleClick(e, "#home")}
+            className="flex items-center gap-3 group"
+          >
             <div className="h-10 w-10 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white shadow-lg shadow-indigo-500/40 group-hover:scale-110 transition">
               <Terminal size={18} />
-              
             </div>
             <span className="text-white font-mono font-semibold tracking-wide">
               <span className="text-indigo-400">&lt;</span>
@@ -52,6 +73,7 @@ export default function Navbar() {
               <li key={link.href} className="relative group">
                 <a
                   href={link.href}
+                  onClick={(e) => handleClick(e, link.href)}
                   className="text-slate-300 hover:text-white transition duration-300"
                 >
                   {link.name}
@@ -68,6 +90,7 @@ export default function Navbar() {
           {/* CTA */}
           <a
             href="#contact"
+            onClick={(e) => handleClick(e, "#contact")}
             className="hidden md:inline-flex px-5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-medium shadow-lg hover:scale-105 transition"
           >
             Hire Me
@@ -121,7 +144,7 @@ export default function Navbar() {
                   <li key={link.href} className="relative group">
                     <a
                       href={link.href}
-                      onClick={() => setOpen(false)}
+                      onClick={(e) => handleClick(e, link.href)}
                       className="text-lg text-slate-300 hover:text-white transition"
                     >
                       {link.name}
@@ -137,7 +160,7 @@ export default function Navbar() {
 
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={(e) => handleClick(e, "#contact")}
                 className="mt-auto text-center py-3 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold shadow-lg"
               >
                 Hire Me

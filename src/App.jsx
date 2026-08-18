@@ -1,12 +1,24 @@
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+import React from 'react'
+import Navbar from "./components/Navbar"
+import { Hero } from "./components/Hero"
+import About from "./components/About"
+import Skills from "./components/Skills"
+import Projects from "./components/Projects"
+import Contact from "./components/Contact"
+import Footer from "./components/Footer"
 
-export default function App() {
+function App() {
+  const [isHoveringNavButton, setIsHoveringNavButton] = React.useState(false)
+  const [isHoveringHeroButton, setIsHoveringHeroButton] = React.useState(false)
+
+  const navLinks = [
+    { name: 'Home', href: '#home' },
+    { name: 'Studio', href: '#about' },
+    { name: 'About', href: '#about' },
+    { name: 'Journal', href: '#projects' },
+    { name: 'Reach Us', href: '#contact' },
+  ]
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-200 antialiased selection:bg-indigo-500/30 selection:text-white">
       <Navbar />
@@ -21,5 +33,7 @@ export default function App() {
 
       <Footer />
     </div>
-  );
+  )
 }
+
+export default App
