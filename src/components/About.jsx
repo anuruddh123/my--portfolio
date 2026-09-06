@@ -5,8 +5,8 @@ const profile = {
   name: "Anuruddh Tiwari",
   role: "MERN Stack Developer",
   phone: "+91 7307122757",
-  email: "anuruddh@email.com",
-  location: "Lucknow, Uttar Pradesh",
+  email: "anuruddhtiwari2022@email.com",
+  location: "Kanpur, Uttar Pradesh",
 };
 
 const summary =
