@@ -63,13 +63,13 @@ export function Hero() {
         />
       </video>
 
-      {/* Dark Overlay for better text visibility */}
-      <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] z-0" />
+      {/* Dark Overlay for better text visibility without GPU-expensive backdrop-blur */}
+      <div className="absolute inset-0 bg-slate-950/75 z-0" />
 
       {/* Ambient Background Effects */}
-      <div className="pointer-events-none absolute inset-0 z-[1]">
-        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-indigo-600/10 blur-3xl" />
-        <div className="absolute top-1/3 -right-24 h-96 w-96 rounded-full bg-violet-600/10 blur-3xl" />
+      <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden">
+        <div className="absolute -top-32 -left-24 h-96 w-96 rounded-full bg-indigo-600/15 blur-3xl" />
+        <div className="absolute top-1/3 -right-24 h-96 w-96 rounded-full bg-violet-600/15 blur-3xl" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
@@ -131,8 +131,10 @@ export function Hero() {
             </a>
 
             <a
-              href="/my_resume.pdf"
-              download
+              href="/T_anuruddh_resume.pdf"
+              download="T_anuruddh_resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-slate-200 text-sm font-semibold transition-all hover:scale-105"
             >
               <Download className="h-4 w-4" />
@@ -176,7 +178,7 @@ export function Hero() {
           }}
           className="lg:col-span-5 hidden lg:block"
         >
-          <div className="relative rounded-2xl border border-white/20 bg-slate-900/70 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden">
+          <div className="relative rounded-2xl border border-white/10 bg-slate-900/95 shadow-2xl shadow-black/60 overflow-hidden">
             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-slate-900/80">
               <span className="h-3 w-3 rounded-full bg-rose-500/80" />
               <span className="h-3 w-3 rounded-full bg-amber-500/80" />

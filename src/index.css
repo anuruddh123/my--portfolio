@@ -5,7 +5,13 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom animations - agar Tailwind config mein nahi hai toh */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Custom animations */
 @keyframes fadeRise {
   from {
     opacity: 0;

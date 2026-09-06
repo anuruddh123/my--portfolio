@@ -1,6 +1,5 @@
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ExternalLink, Check, Sparkles, Code2, Rocket, Eye } from "lucide-react";
-import { useState } from "react";
 
 const projects = [
   {
@@ -41,22 +40,32 @@ const projects = [
     emoji: "🌐",
   },
   {
-    title: "Quickbite Restaurant App",
-    description:
-      "Developed a full-stack food ordering platform with online delivery, menu management, cart functionality, and an admin dashboard for managing products and orders using the MERN stack.",
-    features: [
-      "Online Food Ordering",
-      "Admin Dashboard",
-      "Menu & Product Management",
-      "Cart and Order Management",
-    ],
-    stack: ["React.js", "Node.js", "Express.js", "MongoDB", "JWT", "Tailwind CSS"],
-    github: "https://github.com/anuruddh123/quick-bite",
-    demo: "https://quickbiterest.netlify.app/",
-    gradient: "from-emerald-600 via-teal-600 to-green-600",
-    bgGradient: "from-emerald-500/20 via-teal-500/10 to-green-500/5",
-    emoji: "👨‍🍳",
-  },
+  title: "AI Resume Builder",
+  description:
+    "Developed a full-stack AI-powered resume builder that helps users create professional, ATS-friendly resumes with customizable templates, AI-assisted content generation, and real-time resume preview using the MERN stack.",
+  features: [
+    "AI-Powered Resume Content Generation",
+    "ATS-Friendly Resume Builder",
+    "Customizable Resume Templates",
+    "Real-Time Resume Preview & Editing",
+    "Resume Download as PDF",
+    "User Authentication & Profile Management",
+  ],
+  stack: [
+    "React.js",
+    "Node.js",
+    "Express.js",
+    "MongoDB",
+    "JWT",
+    "Tailwind CSS",
+    "AI API",
+  ],
+  github: "https://github.com/anuruddh123/resume_builder",
+  demo: "https://resume-craftss.netlify.app/",
+  gradient: "from-blue-600 via-indigo-600 to-purple-600",
+  bgGradient: "from-blue-500/20 via-indigo-500/10 to-purple-500/5",
+  emoji: "🤖",
+},
 ];
 
 // ✅ Custom GitHub Icon (lucide-react ka GitHub/Github import hata diya)
@@ -69,70 +78,28 @@ function GithubIcon({ className }) {
 }
 
 function ProjectCard({ project, index }) {
-  const [isHovered, setIsHovered] = useState(false);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [5, -5]), {
-    stiffness: 300,
-    damping: 30,
-  });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-5, 5]), {
-    stiffness: 300,
-    damping: 30,
-  });
-
-  function handleMouseMove(e) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-
-    const mouseXPos = e.clientX - rect.left;
-    const mouseYPos = e.clientY - rect.top;
-
-    const xPct = mouseXPos / width - 0.5;
-    const yPct = mouseYPos / height - 0.5;
-
-    mouseX.set(xPct);
-    mouseY.set(yPct);
-
-    // shine effect vars
-    e.currentTarget.style.setProperty("--mouse-x", `${mouseXPos}px`);
-    e.currentTarget.style.setProperty("--mouse-y", `${mouseYPos}px`);
-  }
-
-  function handleMouseLeave() {
-    mouseX.set(0);
-    mouseY.set(0);
-    setIsHovered(false);
-  }
-
   return (
     <motion.article
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-60px" }}
       transition={{
-        duration: 0.6,
-        delay: index * 0.15,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        duration: 0.5,
+        delay: index * 0.12,
+        ease: "easeOut",
       }}
-      style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className="group relative flex flex-col rounded-3xl bg-gradient-to-br from-slate-900/90 to-slate-900/50 border border-white/10 hover:border-white/20 overflow-hidden backdrop-blur-xl transition-all duration-500"
+      className="group relative flex flex-col rounded-3xl bg-slate-900/95 border border-white/10 hover:border-indigo-500/40 hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.7)] overflow-hidden transition-all duration-300 will-change-transform"
     >
       {/* Gradient Border Overlay */}
       <div
-        className={`pointer-events-none absolute inset-0 rounded-3xl p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${project.gradient}`}
+        className={`pointer-events-none absolute inset-0 rounded-3xl p-[1px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br ${project.gradient}`}
       >
-        <div className="h-full w-full rounded-3xl bg-gradient-to-br from-slate-900/90 to-slate-900/50" />
+        <div className="h-full w-full rounded-3xl bg-slate-900" />
       </div>
 
-      {/* Glow */}
+      {/* Ambient Glow */}
       <div
-        className={`pointer-events-none absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-3xl blur-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+        className={`pointer-events-none absolute -inset-1 bg-gradient-to-r ${project.gradient} rounded-3xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
       />
 
       {/* Header */}
@@ -140,11 +107,7 @@ function ProjectCard({ project, index }) {
         className={`relative h-48 bg-gradient-to-br ${project.bgGradient} border-b border-white/10 overflow-hidden`}
       >
         {/* Grid */}
-        <motion.div
-          animate={{
-            backgroundPosition: isHovered ? ["0px 0px", "24px 24px"] : "0px 0px",
-          }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        <div
           className="absolute inset-0 opacity-[0.15]"
           style={{
             backgroundImage:
@@ -154,80 +117,56 @@ function ProjectCard({ project, index }) {
         />
 
         {/* Orbs */}
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-          className={`absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-3xl`}
+        <div
+          className={`pointer-events-none absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-300`}
         />
-        <motion.div
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-          className={`absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-3xl`}
+        <div
+          className={`pointer-events-none absolute -bottom-10 -right-10 w-40 h-40 bg-gradient-to-br ${project.gradient} rounded-full blur-2xl opacity-20 group-hover:opacity-50 transition-opacity duration-300`}
         />
 
         {/* Emoji */}
         <div className="absolute inset-0 grid place-items-center">
-          <motion.span
-            style={{ transform: "translateZ(50px)" }}
-            animate={{
-              scale: isHovered ? 1.2 : 1,
-              rotateZ: isHovered ? [0, -5, 5, 0] : 0,
-            }}
-            transition={{ duration: 0.5 }}
-            className="text-7xl filter drop-shadow-2xl"
-          >
+          <span className="text-7xl filter drop-shadow-2xl transition-transform duration-300 ease-out group-hover:scale-110">
             {project.emoji}
-          </motion.span>
+          </span>
         </div>
 
         {/* Top buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: isHovered ? 1 : 0, y: isHovered ? 0 : -10 }}
-          className="absolute top-4 right-4 flex gap-2"
-        >
-          <motion.a
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            whileTap={{ scale: 0.95 }}
+        <div className="absolute top-4 right-4 flex gap-2 opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+          <a
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="grid place-items-center h-10 w-10 rounded-xl bg-slate-950/80 backdrop-blur-xl border border-white/20 text-slate-200 hover:text-white hover:bg-slate-900 transition-all shadow-xl"
+            className="grid place-items-center h-10 w-10 rounded-xl bg-slate-950/90 border border-white/20 text-slate-200 hover:text-white hover:bg-slate-900 hover:scale-105 transition-all shadow-xl"
             aria-label="GitHub repo"
           >
             <GithubIcon className="h-4 w-4" />
-          </motion.a>
+          </a>
 
-          <motion.a
-            whileHover={{ scale: 1.1, rotate: -5 }}
-            whileTap={{ scale: 0.95 }}
+          <a
             href={project.demo}
             target="_blank"
             rel="noreferrer"
-            className={`grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br ${project.gradient} text-white transition-all shadow-xl`}
+            className={`grid place-items-center h-10 w-10 rounded-xl bg-gradient-to-br ${project.gradient} text-white hover:scale-105 transition-all shadow-xl`}
             aria-label="Live demo"
           >
             <ExternalLink className="h-4 w-4" />
-          </motion.a>
-        </motion.div>
+          </a>
+        </div>
 
         {/* Status */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -10 }}
-          className="absolute bottom-4 left-4"
-        >
-          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-semibold backdrop-blur-xl">
+        <div className="absolute bottom-4 left-4">
+          <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-semibold shadow-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             Live Project
           </span>
-        </motion.div>
+        </div>
       </div>
 
       {/* Content */}
-      <div className="flex flex-col flex-1 p-6 relative" style={{ transform: "translateZ(25px)" }}>
+      <div className="flex flex-col flex-1 p-6 relative">
         <h3
-          className={`text-xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent group-hover:scale-[1.02] transition-transform origin-left`}
+          className={`text-xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}
         >
           {project.title}
         </h3>
@@ -238,78 +177,56 @@ function ProjectCard({ project, index }) {
 
         {/* Features */}
         <ul className="mt-5 space-y-2">
-          {project.features.map((feature, idx) => (
-            <motion.li
+          {project.features.map((feature) => (
+            <li
               key={feature}
-              initial={{ opacity: 0, x: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.1 }}
               className="flex items-center gap-2 text-xs text-slate-300"
             >
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.2 }}
-                transition={{ duration: 0.3 }}
+              <div
                 className={`h-4 w-4 rounded-full bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0`}
               >
                 <Check className="h-2.5 w-2.5 text-white" />
-              </motion.div>
+              </div>
               {feature}
-            </motion.li>
+            </li>
           ))}
         </ul>
 
         {/* Stack */}
         <div className="mt-6 flex flex-wrap gap-2">
-          {project.stack.map((tech, idx) => (
-            <motion.span
+          {project.stack.map((tech) => (
+            <span
               key={tech}
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              whileHover={{ scale: 1.1, y: -2 }}
-              transition={{ delay: idx * 0.05 }}
-              className={`px-3 py-1.5 rounded-lg text-[11px] font-mono font-semibold bg-gradient-to-r ${project.gradient} bg-opacity-10 text-white/90 border border-white/10 hover:border-white/30 transition-all backdrop-blur-sm`}
+              className={`px-3 py-1.5 rounded-lg text-[11px] font-mono font-semibold bg-white/5 text-white/90 border border-white/10 hover:border-white/30 transition-colors`}
             >
               {tech}
-            </motion.span>
+            </span>
           ))}
         </div>
 
         {/* Buttons */}
         <div className="mt-auto pt-6 border-t border-white/10 flex items-center gap-3">
-          <motion.a
-            whileHover={{ scale: 1.05, x: 2 }}
-            whileTap={{ scale: 0.95 }}
+          <a
             href={project.github}
             target="_blank"
             rel="noreferrer"
-            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-sm font-medium text-slate-300 hover:text-white transition-all"
+            className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 text-sm font-medium text-slate-300 hover:text-white hover:scale-[1.02] transition-all"
           >
             <Code2 className="h-4 w-4" />
             Source Code
-          </motion.a>
+          </a>
 
-          <motion.a
-            whileHover={{ scale: 1.05, x: 2 }}
-            whileTap={{ scale: 0.95 }}
+          <a
             href={project.demo}
             target="_blank"
             rel="noreferrer"
-            className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r ${project.gradient} text-white text-sm font-semibold shadow-lg hover:shadow-xl transition-all`}
+            className={`flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r ${project.gradient} text-white text-sm font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all`}
           >
             <Eye className="h-4 w-4" />
             Live Demo
-          </motion.a>
+          </a>
         </div>
       </div>
-
-      {/* Shine */}
-      <motion.div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%)",
-        }}
-      />
     </motion.article>
   );
 }
@@ -317,19 +234,11 @@ function ProjectCard({ project, index }) {
 export function Projects() {
   return (
     <section id="projects" className="py-28 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute inset-0">
+      {/* Background - Static GPU layers for silky smooth scrolling */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950" />
-        <motion.div
-          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.15, 0.1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/20 rounded-full blur-[120px]"
-        />
-        <motion.div
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.15, 0.1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-          className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-600/20 rounded-full blur-[120px]"
-        />
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-violet-600/15 rounded-full blur-[100px]" />
       </div>
 
       <div className="mx-auto max-w-7xl px-6 relative z-10">

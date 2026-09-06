@@ -67,23 +67,7 @@ const categories = [
   },
 ];
 
-const FloatingParticle = ({ delay }) => (
-  <motion.div
-    className="absolute w-1 h-1 bg-indigo-400 rounded-full"
-    initial={{ opacity: 0, y: 0 }}
-    animate={{
-      opacity: [0, 1, 0],
-      y: [-20, -100],
-      x: [0, Math.random() * 40 - 20],
-    }}
-    transition={{
-      duration: 3,
-      repeat: Infinity,
-      delay: delay,
-      ease: "easeOut",
-    }}
-  />
-);
+
 
 export default function Skills() {
   const [index, setIndex] = useState(0);
@@ -128,33 +112,10 @@ export default function Skills() {
         />
       </div>
 
-      {/* Ambient Glows */}
-      <div className="pointer-events-none absolute inset-0">
-        <motion.div
-          animate={{
-            scale: [1, 1.2, 1],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-indigo-600/20 blur-[120px]"
-        />
-        <motion.div
-          animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.15, 0.25, 0.15],
-          }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-violet-600/20 blur-[120px]"
-        />
+      {/* Ambient Glows - Static GPU layers for 60fps scrolling */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 h-[450px] w-[450px] rounded-full bg-indigo-600/15 blur-[90px]" />
+        <div className="absolute -bottom-40 -right-40 h-[450px] w-[450px] rounded-full bg-violet-600/15 blur-[90px]" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6 text-center relative z-10">
@@ -186,29 +147,14 @@ export default function Skills() {
             Technical Expertise
           </motion.h2>
 
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="mt-4 flex items-center justify-center gap-2"
-          >
+          <div className="mt-4 flex items-center justify-center gap-2">
             {[...Array(3)].map((_, i) => (
-              <motion.div
+              <span
                 key={i}
-                animate={{
-                  scale: [1, 1.5, 1],
-                  opacity: [0.5, 1, 0.5],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  delay: i * 0.2,
-                }}
-                className="w-1.5 h-1.5 rounded-full bg-indigo-400"
+                className="w-1.5 h-1.5 rounded-full bg-indigo-400/80"
               />
             ))}
-          </motion.div>
+          </div>
 
           <motion.p
             initial={{ opacity: 0 }}
@@ -225,22 +171,6 @@ export default function Skills() {
 
         {/* Enhanced 3D Carousel */}
         <div className="relative mt-20 flex items-center justify-center min-h-[580px] md:min-h-[520px]">
-          {/* Floating Particles */}
-          <div className="absolute inset-0 pointer-events-none">
-            {[...Array(8)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                }}
-              >
-                <FloatingParticle delay={i * 0.5} />
-              </div>
-            ))}
-          </div>
-
           {categories.map((cat, i) => {
             const Icon = cat.icon;
 
@@ -255,7 +185,7 @@ export default function Skills() {
               <motion.div
                 key={cat.name}
                 animate={{
-                  x: window.innerWidth < 768 ? position * 50 : position * 360,
+                  x: typeof window !== "undefined" && window.innerWidth < 768 ? position * 50 : position * 360,
                   scale: isActive ? 1 : 0.8,
                   rotateY: position * 15,
                   zIndex: isActive ? 30 : 10 - Math.abs(position),
@@ -266,13 +196,13 @@ export default function Skills() {
                   stiffness: 200,
                   damping: 25,
                 }}
-                className={`absolute w-[92%] md:w-[440px] rounded-3xl p-8 border transition-all duration-700 cursor-pointer
+                className={`absolute w-[92%] md:w-[440px] rounded-3xl p-8 border transition-all duration-500 cursor-pointer
                 ${
                   isActive
-                    ? `border-indigo-500/50 bg-gradient-to-br from-white/[0.08] to-white/[0.02] ${cat.glow}`
-                    : "border-white/10 bg-white/[0.02] hover:border-white/20"
+                    ? `border-indigo-500/50 bg-slate-900/95 ${cat.glow}`
+                    : "border-white/10 bg-slate-900/80 hover:border-white/20"
                 }
-                backdrop-blur-xl`}
+                shadow-2xl`}
                 onClick={() => !isActive && goToSlide(i)}
                 style={{
                   transformStyle: "preserve-3d",
@@ -281,26 +211,22 @@ export default function Skills() {
               >
                 {/* Skill Level Badge */}
                 <div className="absolute -top-3 -right-3">
-                  <motion.div
-                    animate={isActive ? { rotate: [0, 360] } : {}}
-                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                  <div
                     className={`px-3 py-1 rounded-full text-xs font-bold bg-gradient-to-r ${cat.color} text-white shadow-lg flex items-center gap-1`}
                   >
                     <Star size={12} fill="currentColor" />
                     {cat.level}
-                  </motion.div>
+                  </div>
                 </div>
 
                 {/* Icon + Title */}
                 <div className="flex items-center gap-4">
-                  <motion.div
-                    animate={isActive ? { rotate: [0, 360] } : {}}
-                    transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                  <div
                     className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${cat.color} flex items-center justify-center shadow-2xl relative`}
                   >
                     <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/20 to-transparent" />
                     <Icon size={28} className="relative z-10" />
-                  </motion.div>
+                  </div>
 
                   <div className="text-left">
                     <h3 className="text-xl font-bold">{cat.name}</h3>
@@ -318,45 +244,23 @@ export default function Skills() {
 
                 {/* Skills Grid */}
                 <div className="flex flex-wrap gap-2 mt-6">
-                  {cat.skills.map((skill, idx) => (
-                    <motion.div
+                  {cat.skills.map((skill) => (
+                    <div
                       key={skill}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={
-                        isActive
-                          ? { opacity: 1, scale: 1 }
-                          : { opacity: 0.7, scale: 0.95 }
-                      }
-                      transition={{ delay: idx * 0.1 }}
-                      className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/70 px-3 py-1.5 text-xs text-slate-300 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all overflow-hidden"
+                      className="group relative flex items-center gap-2 rounded-full border border-white/10 bg-slate-800/80 px-3 py-1.5 text-xs text-slate-300 hover:border-indigo-500/50 hover:bg-indigo-500/10 transition-all overflow-hidden"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/0 via-indigo-500/20 to-indigo-500/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                       <CheckCircle2 size={12} className="text-indigo-400 relative z-10" />
                       <span className="relative z-10 font-medium">{skill}</span>
-                    </motion.div>
+                    </div>
                   ))}
                 </div>
 
-                {/* Animated Progress Bar */}
+                {/* Progress Bar */}
                 <div className="mt-8 relative">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    animate={isActive ? { width: "100%" } : { width: "30%" }}
-                    transition={{ duration: 1, ease: "easeOut" }}
-                    className={`h-1.5 bg-gradient-to-r ${cat.color} rounded-full relative overflow-hidden`}
-                  >
-                    <motion.div
-                      animate={{
-                        x: ["-100%", "100%"],
-                      }}
-                      transition={{
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent"
-                    />
-                  </motion.div>
+                  <div
+                    className={`h-1.5 bg-gradient-to-r ${cat.color} rounded-full relative overflow-hidden transition-all duration-500`}
+                    style={{ width: isActive ? "100%" : "30%" }}
+                  />
                 </div>
 
                 {/* Decorative Corner Elements */}
@@ -366,24 +270,22 @@ export default function Skills() {
             );
           })}
 
-          {/* Navigation Buttons - Enhanced */}
-          <motion.button
-            whileHover={{ scale: 1.1, x: -5 }}
-            whileTap={{ scale: 0.95 }}
+          {/* Navigation Buttons */}
+          <button
             onClick={prev}
-            className="absolute left-2 md:left-4 z-40 p-4 rounded-full bg-gradient-to-br from-indigo-600/30 to-purple-600/30 hover:from-indigo-600/50 hover:to-purple-600/50 backdrop-blur-xl border border-white/10 transition-all shadow-2xl group"
+            className="absolute left-2 md:left-4 z-40 p-3.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white border border-white/10 transition-all shadow-xl group"
+            aria-label="Previous skill"
           >
-            <ChevronLeft className="group-hover:-translate-x-1 transition-transform" />
-          </motion.button>
+            <ChevronLeft className="group-hover:-translate-x-0.5 transition-transform" />
+          </button>
 
-          <motion.button
-            whileHover={{ scale: 1.1, x: 5 }}
-            whileTap={{ scale: 0.95 }}
+          <button
             onClick={next}
-            className="absolute right-2 md:right-4 z-40 p-4 rounded-full bg-gradient-to-br from-indigo-600/30 to-purple-600/30 hover:from-indigo-600/50 hover:to-purple-600/50 backdrop-blur-xl border border-white/10 transition-all shadow-2xl group"
+            className="absolute right-2 md:right-4 z-40 p-3.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white border border-white/10 transition-all shadow-xl group"
+            aria-label="Next skill"
           >
-            <ChevronRight className="group-hover:translate-x-1 transition-transform" />
-          </motion.button>
+            <ChevronRight className="group-hover:translate-x-0.5 transition-transform" />
+          </button>
         </div>
 
         {/* Slide Indicators */}

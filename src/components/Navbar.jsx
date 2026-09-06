@@ -15,9 +15,16 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    let lastScrolled = false;
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== lastScrolled) {
+        lastScrolled = isScrolled;
+        setScrolled(isScrolled);
+      }
+    };
     onScroll();
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -43,10 +50,10 @@ export default function Navbar() {
     <>
       {/* HEADER */}
       <header
-        className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-slate-950/80 backdrop-blur-xl border-b border-white/10 shadow-xl"
-            : "bg-slate-950/40 backdrop-blur-md"
+            ? "bg-slate-950/90 backdrop-blur-md border-b border-white/10 shadow-xl"
+            : "bg-slate-950/50 backdrop-blur-sm"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
