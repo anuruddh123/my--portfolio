@@ -119,7 +119,7 @@ const projects = [
       "Tailwind CSS",
     ],
     githubFrontend: "https://github.com/anuruddh123/ecommerce",
-    githubBackend: "https://github.com/anuruddh123/e-commerce-backend",
+    githubBackend: "https://github.com/anuruddh123/ecommerce",
     demo: "https://shopvistaaa.netlify.app/",
     domain: "shopvistaaa.netlify.app",
     accentColor: "#10b981",
