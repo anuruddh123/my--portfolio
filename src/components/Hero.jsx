@@ -2,15 +2,11 @@ import { useState, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import {
   ArrowRight,
-  ArrowUpRight,
   Download,
-  Terminal,
   Activity,
   Layers,
   ShieldCheck,
   Database,
-  Radio,
-  Sparkles,
   Server,
   Globe,
   Cpu,
@@ -43,8 +39,8 @@ export function Hero() {
   const smoothMouseX = useSpring(mouseX, { stiffness: 200, damping: 25 });
   const smoothMouseY = useSpring(mouseY, { stiffness: 200, damping: 25 });
 
-  const rotateX = useTransform(smoothMouseY, [-0.5, 0.5], ["8deg", "-8deg"]);
-  const rotateY = useTransform(smoothMouseX, [-0.5, 0.5], ["-8deg", "8deg"]);
+  const rotateX = useTransform(smoothMouseY, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(smoothMouseX, [-0.5, 0.5], ["-7deg", "7deg"]);
 
   const handleMouseMove = (e) => {
     if (!mapRef.current) return;
@@ -79,15 +75,15 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen pt-28 sm:pt-36 pb-20 overflow-hidden flex flex-col justify-center bg-[#02040a] text-white select-none"
+      className="relative min-h-screen pt-24 sm:pt-36 pb-16 sm:pb-20 overflow-hidden flex flex-col justify-center bg-[#02040a] text-white select-none"
     >
-      {/* Dynamic Technical Environment: Floating Fragments, Subtle Particles & Watermarks */}
+      {/* Dynamic Technical Environment */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden z-0">
         <div className="absolute inset-0 bg-digital-system-grid opacity-50" />
 
         {/* Ambient Radial Lighting */}
-        <div className="absolute top-10 left-1/4 w-[650px] h-[650px] bg-cyan-600/10 rounded-full blur-[160px]" />
-        <div className="absolute bottom-10 right-1/4 w-[650px] h-[650px] bg-indigo-600/10 rounded-full blur-[160px]" />
+        <div className="absolute top-10 left-1/4 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-cyan-600/10 rounded-full blur-[120px] sm:blur-[160px]" />
+        <div className="absolute bottom-10 right-1/4 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-indigo-600/10 rounded-full blur-[120px] sm:blur-[160px]" />
 
         {/* Floating Code Snippets in 3D Space */}
         <div className="hidden lg:block absolute top-28 right-16 font-mono text-[10px] text-cyan-400/25 leading-relaxed">
@@ -101,17 +97,17 @@ export function Hero() {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           
           {/* ============ LEFT COLUMN: Monumental Typography & Engineering Controls ============ */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-6 flex flex-col items-start text-left space-y-6"
+            className="lg:col-span-6 flex flex-col items-start text-left space-y-5 sm:space-y-6"
           >
             {/* System Status Label */}
-            <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs shadow-[0_0_15px_rgba(6,182,212,0.15)]">
+            <div className="inline-flex flex-wrap items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-[11px] sm:text-xs shadow-[0_0_15px_rgba(6,182,212,0.15)] max-w-full">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -120,34 +116,34 @@ export function Hero() {
               <span className="text-slate-500">|</span>
               <span className="text-slate-400">FULL-STACK ENGINEER</span>
               <span className="text-slate-500 hidden sm:inline">|</span>
-              <span className="text-emerald-400 hidden sm:inline">AVAILABLE FOR OPPORTUNITIES</span>
+              <span className="text-emerald-400 hidden sm:inline">AVAILABLE FOR ROLES</span>
             </div>
 
-            {/* Monumental Typographic Object */}
-            <div className="space-y-1">
-              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black tracking-tighter uppercase leading-[0.9] text-white">
+            {/* Monumental Typographic Object - Rock-solid responsive scaling */}
+            <div className="space-y-1 w-full">
+              <h1 className="text-4xl xs:text-5xl sm:text-7xl lg:text-8xl font-black tracking-tight sm:tracking-tighter uppercase leading-[0.95] text-white break-words">
                 <span className="block">Anuruddh</span>
                 <span className="block bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_10px_30px_rgba(6,182,212,0.3)]">
                   Tiwari
                 </span>
               </h1>
-              <p className="pt-2 font-mono text-xs sm:text-sm font-bold text-slate-400 tracking-widest uppercase">
+              <p className="pt-2 font-mono text-xs sm:text-sm font-bold text-slate-400 tracking-wider sm:tracking-widest uppercase">
                 MERN STACK • FULL-STACK DEVELOPER
               </p>
             </div>
 
             {/* Concise Engineering Statement */}
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg font-normal">
+            <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-lg font-normal">
               I build production-ready web applications with thoughtful interfaces, secure APIs, and scalable backend systems.
             </p>
 
-            {/* Engineering Controls (Magnetic Buttons) */}
-            <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4 font-mono text-xs sm:text-sm font-bold">
+            {/* Engineering Controls - Fully Responsive for Mobile & Desktop */}
+            <div className="pt-1 sm:pt-2 flex flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3.5 font-mono text-xs sm:text-sm font-bold w-full sm:w-auto">
               {/* [ ENTER PROJECT LAB ] */}
               <a
                 href="#projects"
                 data-cursor-text="PROJECTS →"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 shadow-lg shadow-cyan-400/20 hover:scale-105 active:scale-95 transition-all group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyan-400 text-slate-950 hover:bg-cyan-300 shadow-lg shadow-cyan-400/20 hover:scale-[1.02] active:scale-95 transition-all min-h-[46px] group"
               >
                 <span>[ ENTER PROJECT LAB ]</span>
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -158,39 +154,42 @@ export function Hero() {
                 href="/T_anuruddh_resume.pdf"
                 download="Anuruddh_Tiwari_Resume.pdf"
                 data-cursor-text="DOWNLOAD"
-                className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-white/20 hover:border-cyan-400 text-slate-200 hover:text-white transition-all hover:bg-white/5"
+                className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-white/20 hover:border-cyan-400 text-slate-200 hover:text-white transition-all hover:bg-white/5 min-h-[46px]"
               >
                 <Download className="h-4 w-4 text-emerald-400" />
                 <span>[ RESUME ]</span>
               </a>
 
-              {/* [ GITHUB ] */}
-              <a
-                href="https://github.com/anuruddh123"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor-text="OPEN ↗"
-                className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shadow-sm"
-              >
-                <GithubIcon className="h-4 w-4" />
-                <span className="hidden sm:inline">[ GITHUB ]</span>
-              </a>
+              {/* Social Channels */}
+              <div className="flex items-center gap-2.5 flex-1 sm:flex-initial">
+                <a
+                  href="https://github.com/anuruddh123"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor-text="OPEN ↗"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shadow-sm min-h-[46px]"
+                  title="GitHub Profile"
+                >
+                  <GithubIcon className="h-4 w-4" />
+                  <span>[ GITHUB ]</span>
+                </a>
 
-              {/* [ LINKEDIN ] */}
-              <a
-                href="https://www.linkedin.com/in/anuruddh-tiwari-2842b232a"
-                target="_blank"
-                rel="noreferrer"
-                data-cursor-text="OPEN ↗"
-                className="inline-flex items-center gap-1.5 px-3.5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shadow-sm"
-              >
-                <LinkedinIcon className="h-4 w-4 text-blue-400" />
-                <span className="hidden sm:inline">[ LINKEDIN ]</span>
-              </a>
+                <a
+                  href="https://www.linkedin.com/in/anuruddh-tiwari-2842b232a"
+                  target="_blank"
+                  rel="noreferrer"
+                  data-cursor-text="OPEN ↗"
+                  className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-1.5 px-3.5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all shadow-sm min-h-[46px]"
+                  title="LinkedIn Profile"
+                >
+                  <LinkedinIcon className="h-4 w-4 text-blue-400" />
+                  <span>[ LINKEDIN ]</span>
+                </a>
+              </div>
             </div>
 
             {/* Micro Telemetry HUD */}
-            <div className="pt-2 flex items-center gap-4 text-xs font-mono text-slate-500">
+            <div className="pt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-[11px] sm:text-xs font-mono text-slate-500">
               <span>BASE: KANPUR, IN</span>
               <span>•</span>
               <span className="text-emerald-400">LATENCY: &lt;24ms</span>
@@ -204,7 +203,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.94 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="lg:col-span-6 flex flex-col items-center justify-center select-none"
+            className="lg:col-span-6 flex flex-col items-center justify-center select-none w-full"
             style={{ perspective: 1200 }}
           >
             <motion.div
@@ -216,19 +215,20 @@ export function Hero() {
                 rotateY,
                 transformStyle: "preserve-3d",
               }}
-              className="relative w-full max-w-lg rounded-3xl bg-slate-950/90 border border-cyan-500/30 p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-left space-y-6"
+              className="relative w-full max-w-lg rounded-3xl bg-slate-950/90 border border-cyan-500/30 p-4 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.95)] backdrop-blur-2xl text-left space-y-5 sm:space-y-6"
             >
               {/* Map Console Header */}
               <div className="flex items-center justify-between border-b border-white/10 pb-3 font-mono text-xs">
                 <div className="flex items-center gap-2 text-cyan-400">
                   <Activity className="h-4 w-4 animate-pulse" />
-                  <span className="font-bold tracking-wider">FULL-STACK SYSTEM MAP</span>
+                  <span className="font-bold tracking-wider text-[11px] sm:text-xs">FULL-STACK SYSTEM MAP</span>
                 </div>
-                <span className="text-[10px] text-slate-500">HOVER NODE TO TRACE</span>
+                <span className="text-[10px] text-slate-500 hidden sm:inline">TOUCH / HOVER TO TRACE</span>
+                <span className="text-[10px] text-slate-500 sm:hidden">TAP NODE</span>
               </div>
 
               {/* Architectural Nodes Pipeline */}
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 {systemNodes.map((node, idx) => {
                   const isActive = isNodeActive(node.id);
                   const isDirectHover = hoveredNode === node.id;
@@ -237,19 +237,20 @@ export function Hero() {
                   return (
                     <div
                       key={node.id}
+                      onClick={() => setHoveredNode(hoveredNode === node.id ? null : node.id)}
                       onMouseEnter={() => setHoveredNode(node.id)}
                       data-cursor-text="INSPECT"
-                      className={`p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
+                      className={`p-2.5 sm:p-3 rounded-xl border transition-all cursor-pointer flex items-center justify-between ${
                         isDirectHover
-                          ? "bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-[1.02]"
+                          ? "bg-cyan-500/25 border-cyan-400 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] scale-[1.01]"
                           : isActive
                           ? "bg-slate-900 border-indigo-400/80 text-cyan-300 shadow-[0_0_12px_rgba(99,102,241,0.3)]"
                           : "bg-slate-950/70 border-white/10 text-slate-300 hover:border-white/30"
                       }`}
                     >
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
                         <div
-                          className={`h-7 w-7 rounded-lg flex items-center justify-center border ${
+                          className={`h-7 w-7 rounded-lg flex items-center justify-center border flex-shrink-0 ${
                             isActive
                               ? "bg-cyan-500/20 border-cyan-400 text-cyan-300"
                               : "bg-white/5 border-white/10 text-slate-400"
@@ -257,10 +258,10 @@ export function Hero() {
                         >
                           <Icon className="h-3.5 w-3.5" />
                         </div>
-                        <span className="font-mono text-xs font-bold">{node.label}</span>
+                        <span className="font-mono text-[11px] sm:text-xs font-bold truncate">{node.label}</span>
                       </div>
 
-                      <div className="flex items-center gap-2 font-mono text-[10px]">
+                      <div className="flex items-center gap-1.5 sm:gap-2 font-mono text-[9px] sm:text-[10px] flex-shrink-0">
                         {isActive ? (
                           <span className="text-cyan-400 font-bold flex items-center gap-1">
                             <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-ping" />
@@ -276,13 +277,16 @@ export function Hero() {
               </div>
 
               {/* Active Path Readout */}
-              <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono">
-                <span className="text-slate-400">
+              <div className="pt-3 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-[11px] sm:text-xs font-mono">
+                <span className="text-slate-400 truncate">
                   {hoveredNode
-                    ? `TRACED PATH: ${systemNodes.find((n) => n.id === hoveredNode)?.path.join(" → ").toUpperCase()}`
-                    : "HOVER ANY NODE TO TRACE FULL PATHWAY"}
+                    ? `PATH: ${systemNodes.find((n) => n.id === hoveredNode)?.path.join(" → ").toUpperCase()}`
+                    : "TAP / HOVER ANY NODE TO TRACE PATHWAY"}
                 </span>
-                <span className="text-emerald-400 font-bold">200 OK</span>
+                <span className="text-emerald-400 font-bold self-end sm:self-auto flex items-center gap-1">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  200 OK
+                </span>
               </div>
             </motion.div>
           </motion.div>

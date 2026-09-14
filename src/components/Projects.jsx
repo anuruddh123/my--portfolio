@@ -119,7 +119,7 @@ const projects = [
       "Tailwind CSS",
     ],
     githubFrontend: "https://github.com/anuruddh123/ecommerce",
-    githubBackend: "https://github.com/anuruddh123/ecommerce",
+    githubBackend: "https://github.com/anuruddh123/ecommerce", // Updated as requested
     demo: "https://shopvistaaa.netlify.app/",
     domain: "shopvistaaa.netlify.app",
     accentColor: "#10b981",
@@ -297,24 +297,24 @@ function GithubIcon({ className = "h-4 w-4" }) {
   );
 }
 
-// Simulated High-Fidelity Browser Canvas Previews
+// Simulated High-Fidelity Browser Canvas Previews (Mobile-Fluid & Desktop-Crisp)
 function BrowserMockupScreen({ project }) {
   if (project.id === "resume-tailor") {
     return (
-      <div className="h-full w-full bg-slate-950 p-4 flex flex-col justify-between select-none text-left font-sans">
+      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
         {/* Top App Header */}
-        <div className="flex items-center justify-between border-b border-indigo-500/20 pb-3">
+        <div className="flex items-center justify-between border-b border-indigo-500/20 pb-2.5">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
+            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
               RT
             </div>
             <div>
               <p className="text-xs font-bold text-white leading-tight">ResumeTailor AI</p>
-              <p className="text-[10px] text-indigo-400 font-mono">ATS Match Engine v2.4</p>
+              <p className="text-[9px] sm:text-[10px] text-indigo-400 font-mono">ATS Match Engine v2.4</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono flex items-center gap-1">
+            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
               Role: Developer
             </span>
@@ -322,11 +322,11 @@ function BrowserMockupScreen({ project }) {
         </div>
 
         {/* Middle Canvas: ATS Score & Keyword Detection */}
-        <div className="grid grid-cols-12 gap-3 my-auto py-2">
+        <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-3 my-auto py-2">
           {/* Score Circular Gauge */}
-          <div className="col-span-5 bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-3 flex flex-col items-center justify-center text-center">
-            <div className="relative h-16 w-16 flex items-center justify-center">
-              <svg className="h-16 w-16 -rotate-90" viewBox="0 0 36 36">
+          <div className="sm:col-span-5 bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-2.5 sm:p-3 flex sm:flex-col items-center justify-around sm:justify-center text-center gap-2 sm:gap-0">
+            <div className="relative h-14 w-14 sm:h-16 sm:w-16 flex items-center justify-center">
+              <svg className="h-14 w-14 sm:h-16 sm:w-16 -rotate-90" viewBox="0 0 36 36">
                 <path
                   d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
                   fill="none"
@@ -342,17 +342,20 @@ function BrowserMockupScreen({ project }) {
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-base font-extrabold text-white">94%</span>
-                <span className="text-[8px] text-indigo-300 font-mono">ATS SCORE</span>
+                <span className="text-sm sm:text-base font-extrabold text-white">94%</span>
+                <span className="text-[7px] sm:text-[8px] text-indigo-300 font-mono">ATS SCORE</span>
               </div>
             </div>
-            <p className="mt-2 text-[10px] font-semibold text-emerald-400">High Match Potential</p>
+            <div className="sm:mt-2 text-left sm:text-center">
+              <p className="text-[10px] sm:text-[11px] font-semibold text-emerald-400">High Match Potential</p>
+              <p className="text-[8.5px] text-slate-400 font-mono">Analyzed against Job Req</p>
+            </div>
           </div>
 
           {/* Keywords & Gap Analysis */}
-          <div className="col-span-7 bg-slate-900/80 border border-white/10 rounded-xl p-3 flex flex-col justify-between">
+          <div className="sm:col-span-7 bg-slate-900/80 border border-white/10 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between">
             <div>
-              <p className="text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
+              <p className="text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
                 <Check className="h-3 w-3 text-emerald-400" />
                 Detected Keyword Alignments
               </p>
@@ -360,14 +363,14 @@ function BrowserMockupScreen({ project }) {
                 {["React.js", "Node.js", "REST APIs", "JWT Auth", "MongoDB", "Tailwind"].map((kw) => (
                   <span
                     key={kw}
-                    className="px-1.5 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 text-[9px] font-mono"
+                    className="px-1.5 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 text-[8.5px] sm:text-[9px] font-mono"
                   >
                     {kw}
                   </span>
                 ))}
               </div>
             </div>
-            <div className="mt-2 pt-2 border-t border-white/5 flex items-center justify-between text-[10px]">
+            <div className="mt-2 pt-1.5 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px]">
               <span className="text-slate-400 font-mono">PDF Schema Export</span>
               <span className="text-emerald-400 font-bold flex items-center gap-1">
                 <FileText className="h-3 w-3" /> Ready
@@ -377,12 +380,12 @@ function BrowserMockupScreen({ project }) {
         </div>
 
         {/* Bottom Interactive Bar */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-3 py-2 flex items-center justify-between text-[10px]">
-          <div className="flex items-center gap-2 text-slate-300">
-            <ShieldCheck className="h-3.5 w-3.5 text-indigo-400" />
-            <span className="font-mono">JWT Bearer Authenticated</span>
+        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
+            <ShieldCheck className="h-3.5 w-3.5 text-indigo-400 flex-shrink-0" />
+            <span className="font-mono truncate">JWT Bearer Authenticated</span>
           </div>
-          <span className="px-2 py-0.5 rounded bg-indigo-600 text-white font-medium">
+          <span className="px-2 py-0.5 rounded bg-indigo-600 text-white font-medium flex-shrink-0">
             Live Preview
           </span>
         </div>
@@ -392,20 +395,20 @@ function BrowserMockupScreen({ project }) {
 
   if (project.id === "ecommerce") {
     return (
-      <div className="h-full w-full bg-slate-950 p-4 flex flex-col justify-between select-none text-left font-sans">
+      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
         {/* Storefront Navigation */}
-        <div className="flex items-center justify-between border-b border-emerald-500/20 pb-3">
+        <div className="flex items-center justify-between border-b border-emerald-500/20 pb-2.5">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
+            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
               SV
             </div>
             <div>
               <p className="text-xs font-bold text-white leading-tight">ShopVista Store</p>
-              <p className="text-[10px] text-emerald-400 font-mono">Full-Stack MERN Hub</p>
+              <p className="text-[9px] sm:text-[10px] text-emerald-400 font-mono">Full-Stack MERN Hub</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="px-2 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[10px] font-mono flex items-center gap-1.5">
+            <div className="px-2 py-0.5 sm:py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[9.5px] sm:text-[10px] font-mono flex items-center gap-1.5">
               <ShoppingCart className="h-3 w-3 text-emerald-400" />
               <span>Cart: 3 items</span>
               <span className="font-bold text-white">$149</span>
@@ -414,26 +417,26 @@ function BrowserMockupScreen({ project }) {
         </div>
 
         {/* Store Catalog Grid */}
-        <div className="grid grid-cols-3 gap-2.5 my-auto py-2">
+        <div className="grid grid-cols-3 gap-2 sm:gap-2.5 my-auto py-2">
           {[
-            { name: "Pro Headset", price: "$79", tag: "Audio" },
-            { name: "Mech Keyboard", price: "$49", tag: "Gear" },
-            { name: "Ergo Mouse", price: "$21", tag: "Office" },
+            { name: "Pro Headset", price: "$79", tag: "Audio", emoji: "🎧" },
+            { name: "Mech Keys", price: "$49", tag: "Gear", emoji: "⌨️" },
+            { name: "Ergo Mouse", price: "$21", tag: "Desk", emoji: "🖱️" },
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-slate-900/90 border border-white/10 rounded-xl p-2.5 flex flex-col justify-between"
+              className="bg-slate-900/90 border border-white/10 rounded-xl p-2 sm:p-2.5 flex flex-col justify-between"
             >
               <div>
-                <div className="h-10 rounded-lg bg-gradient-to-br from-emerald-950/60 to-slate-900 border border-emerald-500/20 flex items-center justify-center text-lg mb-1.5">
-                  {i === 0 ? "🎧" : i === 1 ? "⌨️" : "🖱️"}
+                <div className="h-8 sm:h-10 rounded-lg bg-gradient-to-br from-emerald-950/60 to-slate-900 border border-emerald-500/20 flex items-center justify-center text-base sm:text-lg mb-1 sm:mb-1.5">
+                  {item.emoji}
                 </div>
-                <p className="text-[11px] font-bold text-white leading-snug">{item.name}</p>
-                <p className="text-[9px] text-emerald-400 font-mono">{item.tag}</p>
+                <p className="text-[10px] sm:text-[11px] font-bold text-white leading-snug truncate">{item.name}</p>
+                <p className="text-[8.5px] sm:text-[9px] text-emerald-400 font-mono">{item.tag}</p>
               </div>
-              <div className="mt-2 flex items-center justify-between">
-                <span className="text-[11px] font-extrabold text-white">{item.price}</span>
-                <span className="px-1.5 py-0.5 rounded bg-emerald-600/30 text-emerald-300 text-[8.5px] font-mono">
+              <div className="mt-1.5 sm:mt-2 flex items-center justify-between">
+                <span className="text-[10px] sm:text-[11px] font-extrabold text-white">{item.price}</span>
+                <span className="px-1.5 py-0.5 rounded bg-emerald-600/30 text-emerald-300 text-[8px] sm:text-[8.5px] font-mono">
                   + Cart
                 </span>
               </div>
@@ -442,12 +445,12 @@ function BrowserMockupScreen({ project }) {
         </div>
 
         {/* Bottom Cart Status */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-3 py-2 flex items-center justify-between text-[10px]">
-          <div className="flex items-center gap-2 text-slate-300">
-            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-mono">Express REST • MongoDB Index</span>
+        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
+            <span className="font-mono truncate">Express REST • MongoDB Index</span>
           </div>
-          <span className="text-emerald-400 font-mono font-medium">Admin RBAC</span>
+          <span className="text-emerald-400 font-mono font-medium flex-shrink-0">Admin RBAC</span>
         </div>
       </div>
     );
@@ -455,20 +458,20 @@ function BrowserMockupScreen({ project }) {
 
   if (project.id === "news-alerts") {
     return (
-      <div className="h-full w-full bg-slate-950 p-4 flex flex-col justify-between select-none text-left font-sans">
+      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
         {/* Newsroom Topbar */}
-        <div className="flex items-center justify-between border-b border-purple-500/20 pb-3">
+        <div className="flex items-center justify-between border-b border-purple-500/20 pb-2.5">
           <div className="flex items-center gap-2">
-            <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white text-xs font-bold shadow-md">
-              <Radio className="h-4 w-4 text-white animate-pulse" />
+            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
+              <Radio className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white animate-pulse" />
             </div>
             <div>
               <p className="text-xs font-bold text-white leading-tight">NewsWire Live</p>
-              <p className="text-[10px] text-purple-400 font-mono">Socket.IO Broadcast Room</p>
+              <p className="text-[9px] sm:text-[10px] text-purple-400 font-mono">Socket.IO Broadcast Room</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[10px] font-mono flex items-center gap-1">
+            <span className="px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
               <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-ping" />
               LIVE STREAM
             </span>
@@ -477,38 +480,38 @@ function BrowserMockupScreen({ project }) {
 
         {/* Live News Bulletins */}
         <div className="space-y-2 my-auto py-2">
-          <div className="bg-gradient-to-r from-purple-950/60 to-slate-900 border border-purple-500/30 rounded-xl p-2.5">
-            <div className="flex items-center justify-between text-[9px] font-mono text-purple-300 mb-1">
+          <div className="bg-gradient-to-r from-purple-950/60 to-slate-900 border border-purple-500/30 rounded-xl p-2 sm:p-2.5">
+            <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-purple-300 mb-1">
               <span className="bg-purple-500/20 px-1.5 py-0.5 rounded text-purple-200 uppercase font-bold">
                 BREAKING FLASH
               </span>
-              <span>Just Now • WebSocket Broadcast</span>
+              <span>Just Now • WebSocket</span>
             </div>
-            <p className="text-[11px] font-semibold text-white leading-snug">
-              Global Tech Summit Unveils Next-Gen Real-Time Web Architectures
+            <p className="text-[10.5px] sm:text-[11px] font-semibold text-white leading-snug line-clamp-2">
+              Next-Gen Event-Driven Web Architectures Reduce Latency to Sub-15ms
             </p>
           </div>
 
-          <div className="bg-slate-900/80 border border-white/10 rounded-xl p-2.5">
-            <div className="flex items-center justify-between text-[9px] font-mono text-slate-400 mb-1">
+          <div className="bg-slate-900/80 border border-white/10 rounded-xl p-2 sm:p-2.5">
+            <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-slate-400 mb-1">
               <span className="bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 uppercase">
-                Economy & Markets
+                Economy & Tech
               </span>
               <span>2m ago • Verified</span>
             </div>
-            <p className="text-[11px] font-semibold text-slate-200 leading-snug">
-              Cloud Infrastructure Adoption Surges 42% Year-Over-Year
+            <p className="text-[10.5px] sm:text-[11px] font-semibold text-slate-200 leading-snug truncate">
+              Full-Stack Application Scale Surges Worldwide
             </p>
           </div>
         </div>
 
         {/* Telemetry Footer */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-3 py-2 flex items-center justify-between text-[10px]">
-          <div className="flex items-center gap-2 text-purple-300 font-mono">
-            <Activity className="h-3 w-3 text-purple-400 animate-pulse" />
-            <span>Latency: 12ms (Socket Duplex)</span>
+        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-purple-300 font-mono truncate">
+            <Activity className="h-3.5 w-3.5 text-purple-400 animate-pulse flex-shrink-0" />
+            <span className="truncate">Latency: 12ms (Socket Duplex)</span>
           </div>
-          <span className="text-slate-400 font-mono">Admin Portal</span>
+          <span className="text-slate-400 font-mono flex-shrink-0">Admin Portal</span>
         </div>
       </div>
     );
@@ -516,20 +519,20 @@ function BrowserMockupScreen({ project }) {
 
   // QuickBite Restaurant App (Scene 04)
   return (
-    <div className="h-full w-full bg-slate-950 p-4 flex flex-col justify-between select-none text-left font-sans">
+    <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
       {/* QuickBite Navigation */}
-      <div className="flex items-center justify-between border-b border-amber-500/20 pb-3">
+      <div className="flex items-center justify-between border-b border-amber-500/20 pb-2.5">
         <div className="flex items-center gap-2">
-          <div className="h-7 w-7 rounded-lg bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white text-xs font-bold shadow-md">
+          <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
             QB
           </div>
           <div>
             <p className="text-xs font-bold text-white leading-tight">QuickBite Kitchen</p>
-            <p className="text-[10px] text-amber-400 font-mono">Live Order Lifecycle Engine</p>
+            <p className="text-[9px] sm:text-[10px] text-amber-400 font-mono">Live Order Lifecycle Engine</p>
           </div>
         </div>
         <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[10px] font-mono flex items-center gap-1">
+          <span className="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
             <UtensilsCrossed className="h-3 w-3 text-amber-400" />
             Order #QB-8492
           </span>
@@ -537,14 +540,14 @@ function BrowserMockupScreen({ project }) {
       </div>
 
       {/* Culinary Workflow & Live Pipeline */}
-      <div className="my-auto py-2 space-y-2.5">
+      <div className="my-auto py-2 space-y-2">
         {/* Order Progress Tracker */}
-        <div className="bg-slate-900/90 border border-amber-500/30 rounded-xl p-2.5">
-          <div className="flex items-center justify-between text-[9px] font-mono text-slate-300 mb-2">
+        <div className="bg-slate-900/90 border border-amber-500/30 rounded-xl p-2 sm:p-2.5">
+          <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-slate-300 mb-1.5">
             <span>Order Status:</span>
             <span className="text-amber-400 font-bold">PREPARING IN KITCHEN</span>
           </div>
-          <div className="grid grid-cols-3 gap-1.5 text-center text-[9px] font-mono">
+          <div className="grid grid-cols-3 gap-1.5 text-center text-[8.5px] sm:text-[9px] font-mono">
             <div className="py-1 px-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
               ✓ Confirmed
             </div>
@@ -558,37 +561,37 @@ function BrowserMockupScreen({ project }) {
         </div>
 
         {/* Dish Items Preview */}
-        <div className="grid grid-cols-2 gap-2">
-          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-2 flex items-center gap-2">
-            <span className="text-xl">🍔</span>
+        <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
+          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-1.5 sm:p-2 flex items-center gap-2">
+            <span className="text-base sm:text-xl">🍔</span>
             <div className="min-w-0">
-              <p className="text-[10.5px] font-bold text-white truncate">Gourmet Burger</p>
-              <p className="text-[9px] text-amber-400 font-mono">$12.50 • Qty: 2</p>
+              <p className="text-[10px] sm:text-[10.5px] font-bold text-white truncate">Gourmet Burger</p>
+              <p className="text-[8.5px] sm:text-[9px] text-amber-400 font-mono">$12.50 • Qty: 2</p>
             </div>
           </div>
-          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-2 flex items-center gap-2">
-            <span className="text-xl">🍕</span>
+          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-1.5 sm:p-2 flex items-center gap-2">
+            <span className="text-base sm:text-xl">🍕</span>
             <div className="min-w-0">
-              <p className="text-[10.5px] font-bold text-white truncate">Artisan Truffle Pizza</p>
-              <p className="text-[9px] text-amber-400 font-mono">$18.00 • Qty: 1</p>
+              <p className="text-[10px] sm:text-[10.5px] font-bold text-white truncate">Truffle Pizza</p>
+              <p className="text-[8.5px] sm:text-[9px] text-amber-400 font-mono">$18.00 • Qty: 1</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Bottom Kitchen Console Bar */}
-      <div className="bg-slate-900/90 border border-white/10 rounded-lg px-3 py-2 flex items-center justify-between text-[10px]">
-        <div className="flex items-center gap-2 text-slate-300">
-          <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
-          <span className="font-mono">Role: Kitchen Admin & Customer</span>
+      <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
+        <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
+          <ShieldCheck className="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />
+          <span className="font-mono truncate">Role: Kitchen Admin & Customer</span>
         </div>
-        <span className="text-amber-400 font-mono font-bold">MERN Production</span>
+        <span className="text-amber-400 font-mono font-bold flex-shrink-0">MERN Live</span>
       </div>
     </div>
   );
 }
 
-// 3D Tilt Browser Mockup Component
+// 3D Tilt Browser Mockup Component with Zero Mobile Overflow
 function BrowserSceneMockup({
   project,
   activeHoverKey,
@@ -601,8 +604,8 @@ function BrowserSceneMockup({
   const mouseXSpring = useSpring(x, { stiffness: 250, damping: 25 });
   const mouseYSpring = useSpring(y, { stiffness: 250, damping: 25 });
 
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["9deg", "-9deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-9deg", "9deg"]);
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -629,7 +632,7 @@ function BrowserSceneMockup({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-[560px] mx-auto py-6 sm:py-8 select-none"
+      className="relative w-full max-w-[560px] mx-auto py-2 sm:py-6 select-none"
       style={{ perspective: 1200 }}
     >
       {/* Background Orbital Glow Ambient */}
@@ -640,12 +643,12 @@ function BrowserSceneMockup({
         }}
       />
 
-      {/* ============ FLOATING TELEMETRY LABELS AROUND BROWSER ============ */}
+      {/* ============ DESKTOP-ONLY FLOATING TELEMETRY (Hidden on Mobile to eliminate overflow) ============ */}
       {/* 1. LIVE Indicator - Top Left */}
       <motion.div
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className={`absolute -top-3 -left-2 sm:-left-6 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold flex items-center gap-2 backdrop-blur-md shadow-xl transition-all duration-300 ${
+        className={`hidden sm:flex absolute -top-3 -left-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-2 backdrop-blur-md shadow-xl transition-all duration-300 ${
           activeHoverKey === "Live" || activeHoverKey === "React.js"
             ? "scale-110 ring-2 ring-emerald-400 bg-emerald-500/30 text-white shadow-emerald-500/50"
             : "bg-slate-900/90 border border-emerald-500/40 text-emerald-300 shadow-black/60"
@@ -656,14 +659,14 @@ function BrowserSceneMockup({
           <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
         </span>
         <span>LIVE</span>
-        <span className="text-[10px] text-emerald-400/80 hidden sm:inline">• 200 OK</span>
+        <span className="text-[10px] text-emerald-400/80">• 200 OK</span>
       </motion.div>
 
       {/* 2. AUTH Indicator - Top Right */}
       <motion.div
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className={`absolute -top-3 -right-2 sm:-right-6 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
+        className={`hidden sm:flex absolute -top-3 -right-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
           activeHoverKey === "JWT Auth" || activeHoverKey === "JWT" || activeHoverKey === "Auth Guard"
             ? "scale-110 ring-2 ring-indigo-400 bg-indigo-500/30 text-white shadow-indigo-500/50"
             : "bg-slate-900/90 border border-indigo-500/40 text-indigo-300 shadow-black/60"
@@ -671,14 +674,14 @@ function BrowserSceneMockup({
       >
         <ShieldCheck className="h-3.5 w-3.5 text-indigo-400" />
         <span>AUTH</span>
-        <span className="text-[10px] text-indigo-400/80 hidden sm:inline">• JWT/RBAC</span>
+        <span className="text-[10px] text-indigo-400/80">• JWT/RBAC</span>
       </motion.div>
 
       {/* 3. API Indicator - Bottom Left */}
       <motion.div
         animate={{ y: [0, -5, 0] }}
         transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className={`absolute -bottom-3 -left-2 sm:-left-6 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
+        className={`hidden sm:flex absolute -bottom-3 -left-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
           activeHoverKey === "Express.js" || activeHoverKey === "REST APIs" || activeHoverKey === "Socket.IO" || activeHoverKey === "API Gateway"
             ? "scale-110 ring-2 ring-cyan-400 bg-cyan-500/30 text-white shadow-cyan-500/50"
             : "bg-slate-900/90 border border-cyan-500/40 text-cyan-300 shadow-black/60"
@@ -686,14 +689,14 @@ function BrowserSceneMockup({
       >
         <Server className="h-3.5 w-3.5 text-cyan-400" />
         <span>API</span>
-        <span className="text-[10px] text-cyan-400/80 hidden sm:inline">• Express REST</span>
+        <span className="text-[10px] text-cyan-400/80">• Express REST</span>
       </motion.div>
 
       {/* 4. DATABASE Indicator - Bottom Right */}
       <motion.div
         animate={{ y: [0, 5, 0] }}
         transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-        className={`absolute -bottom-3 -right-2 sm:-right-6 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold flex items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
+        className={`hidden sm:flex absolute -bottom-3 -right-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
           activeHoverKey === "MongoDB" || activeHoverKey === "Data Store"
             ? "scale-110 ring-2 ring-emerald-400 bg-emerald-500/30 text-white shadow-emerald-500/50"
             : "bg-slate-900/90 border border-emerald-500/40 text-emerald-300 shadow-black/60"
@@ -701,7 +704,7 @@ function BrowserSceneMockup({
       >
         <Database className="h-3.5 w-3.5 text-emerald-400" />
         <span>DATABASE</span>
-        <span className="text-[10px] text-emerald-400/80 hidden sm:inline">• MongoDB</span>
+        <span className="text-[10px] text-emerald-400/80">• MongoDB</span>
       </motion.div>
 
       {/* ============ 3D TILT BROWSER FRAME ============ */}
@@ -711,7 +714,7 @@ function BrowserSceneMockup({
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        whileHover={{ scale: 1.02 }}
+        whileHover={{ scale: 1.01 }}
         transition={{ duration: 0.3 }}
         onClick={onOpenCaseStudy}
         data-cursor-text="CASE STUDY"
@@ -722,22 +725,22 @@ function BrowserSceneMockup({
         }`}
       >
         {/* Browser Top Navigation Bar */}
-        <div className="bg-slate-900/95 border-b border-white/10 px-4 py-3 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-1.5">
-            <span className="h-3 w-3 rounded-full bg-rose-500/90 shadow-sm" />
-            <span className="h-3 w-3 rounded-full bg-amber-500/90 shadow-sm" />
-            <span className="h-3 w-3 rounded-full bg-emerald-500/90 shadow-sm" />
+        <div className="bg-slate-900/95 border-b border-white/10 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-500/90 shadow-sm" />
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/90 shadow-sm" />
+            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/90 shadow-sm" />
           </div>
 
-          <div className="flex-1 max-w-[320px] bg-slate-950/90 border border-white/10 rounded-lg px-3 py-1 flex items-center justify-between text-xs font-mono text-slate-300 shadow-inner">
+          <div className="flex-1 max-w-[280px] sm:max-w-[320px] bg-slate-950/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1 flex items-center justify-between text-[11px] sm:text-xs font-mono text-slate-300 shadow-inner min-w-0">
             <div className="flex items-center gap-1.5 min-w-0">
               <Lock className="h-3 w-3 text-emerald-400 flex-shrink-0" />
               <span className="truncate text-slate-200">{project.domain}</span>
             </div>
-            <span className="text-[10px] text-slate-500 hidden sm:inline">SSL 256-bit</span>
+            <span className="text-[10px] text-slate-500 hidden sm:inline flex-shrink-0">SSL 256-bit</span>
           </div>
 
-          <div className="flex items-center gap-2 text-slate-400">
+          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-400 flex-shrink-0">
             <a
               href={project.demo}
               target="_blank"
@@ -763,15 +766,26 @@ function BrowserSceneMockup({
           </div>
         </div>
 
-        {/* Browser Viewport Canvas (Aspect Ratio 16:10) */}
-        <div className="relative h-[300px] sm:h-[340px] w-full overflow-hidden bg-slate-950">
+        {/* Mobile Inline Telemetry Strip (Visible only on mobile for clean UX) */}
+        <div className="sm:hidden bg-slate-900/90 border-b border-white/10 px-3 py-1.5 flex items-center justify-between text-[10px] font-mono">
+          <span className="flex items-center gap-1 text-emerald-400 font-bold">
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            LIVE 200 OK
+          </span>
+          <span className="text-indigo-300 font-medium">JWT AUTH</span>
+          <span className="text-cyan-300 font-medium">EXPRESS REST</span>
+          <span className="text-emerald-300 font-medium">MONGODB</span>
+        </div>
+
+        {/* Browser Viewport Canvas */}
+        <div className="relative h-[270px] sm:h-[340px] w-full overflow-hidden bg-slate-950">
           <BrowserMockupScreen project={project} />
 
           {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none">
-            <div className="px-4 py-2 rounded-xl bg-cyan-600/90 text-white font-mono text-xs font-semibold flex items-center gap-2 shadow-xl border border-cyan-300/40 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none p-4">
+            <div className="px-4 py-2 rounded-xl bg-cyan-600/90 text-white font-mono text-xs font-semibold flex items-center gap-2 shadow-xl border border-cyan-300/40 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 text-center">
               <Eye className="h-3.5 w-3.5 text-white" />
-              <span>Click to Explore Production Case Study</span>
+              <span>Tap / Click to Inspect Architectural Case Study</span>
             </div>
           </div>
         </div>
@@ -819,25 +833,25 @@ function CaseStudyModal({ project, isOpen, onClose }) {
           className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-slate-950 border border-cyan-500/30 rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden z-10 text-left"
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-slate-900/90">
-            <div className="flex items-center gap-3">
-              <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white text-base font-bold shadow-lg">
+          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-slate-900/90">
+            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+              <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg flex-shrink-0">
                 {project.number}
               </div>
-              <div>
-                <h3 className="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
-                  <span>{project.title}</span>
-                  <span className="text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono font-normal">
+              <div className="min-w-0">
+                <h3 className="text-base sm:text-xl font-bold text-white flex items-center gap-2 truncate">
+                  <span className="truncate">{project.title}</span>
+                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono font-normal flex-shrink-0">
                     Case Study
                   </span>
                 </h3>
-                <p className="text-xs text-slate-400 font-mono">{project.tagline}</p>
+                <p className="text-[11px] sm:text-xs text-slate-400 font-mono truncate">{project.tagline}</p>
               </div>
             </div>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 hover:text-white transition-colors"
+              className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 hover:text-white transition-colors flex-shrink-0"
               aria-label="Close Case Study"
             >
               <X className="h-5 w-5" />
@@ -845,72 +859,66 @@ function CaseStudyModal({ project, isOpen, onClose }) {
           </div>
 
           {/* Tab Navigation */}
-          <div className="flex items-center gap-2 px-6 py-3 border-b border-white/10 bg-slate-900/50 overflow-x-auto scrollbar-none">
+          <div className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 border-b border-white/10 bg-slate-900/50 overflow-x-auto scrollbar-none">
             {[
-              { id: "overview", label: "1. System Overview", icon: Eye },
-              { id: "frontend", label: "2. Frontend Engineering", icon: Layers },
-              { id: "backend", label: "3. Backend Architecture", icon: Server },
-              { id: "database", label: "4. Database & Telemetry", icon: Database },
+              { id: "overview", label: "Overview", icon: Eye },
+              { id: "frontend", label: "Frontend", icon: Globe },
+              { id: "backend", label: "Backend", icon: Server },
+              { id: "database", label: "Database", icon: Database },
             ].map((tab) => {
               const Icon = tab.icon;
-              const isSelected = activeTab === tab.id;
+              const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`relative px-4 py-2 rounded-xl text-xs font-medium flex items-center gap-2 transition-colors whitespace-nowrap ${
-                    isSelected
-                      ? "text-white font-semibold"
-                      : "text-slate-400 hover:text-slate-200"
+                  className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-mono font-medium flex items-center gap-1.5 transition-all flex-shrink-0 ${
+                    isActive
+                      ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-sm"
+                      : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
                   }`}
                 >
-                  {isSelected && (
-                    <motion.div
-                      layoutId="modalTabPill"
-                      className="absolute inset-0 bg-cyan-600/30 border border-cyan-500/50 rounded-xl"
-                    />
-                  )}
-                  <Icon className={`h-3.5 w-3.5 relative z-10 ${isSelected ? "text-cyan-400" : ""}`} />
-                  <span className="relative z-10">{tab.label}</span>
+                  <Icon className="h-3.5 w-3.5" />
+                  <span>{tab.label}</span>
                 </button>
               );
             })}
           </div>
 
           {/* Modal Body Content */}
-          <div className="p-6 overflow-y-auto max-h-[60vh] space-y-6 text-slate-300 text-sm leading-relaxed">
+          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 text-xs sm:text-sm">
             {activeTab === "overview" && (
-              <div className="space-y-6">
+              <div className="space-y-5">
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-cyan-400 tracking-wider mb-2 flex items-center gap-1.5">
-                    <Rocket className="h-3.5 w-3.5" /> Problem Statement
+                  <h4 className="font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2 font-semibold">
+                    The Problem Space
                   </h4>
-                  <p className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 text-slate-200">
+                  <p className="text-slate-300 leading-relaxed bg-slate-900/60 border border-white/10 p-4 rounded-2xl">
                     {project.caseStudy.problem}
                   </p>
                 </div>
 
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-emerald-400 tracking-wider mb-2 flex items-center gap-1.5">
-                    <Check className="h-3.5 w-3.5" /> Engineering Solution
+                  <h4 className="font-mono text-xs uppercase tracking-wider text-emerald-400 mb-2 font-semibold">
+                    The Engineered Solution
                   </h4>
-                  <p className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 text-slate-200">
+                  <p className="text-slate-300 leading-relaxed bg-slate-900/60 border border-white/10 p-4 rounded-2xl">
                     {project.caseStudy.solution}
                   </p>
                 </div>
 
+                {/* Key Verified Metrics */}
                 <div>
-                  <h4 className="text-xs font-mono uppercase text-indigo-400 tracking-wider mb-3 flex items-center gap-1.5">
-                    <Activity className="h-3.5 w-3.5" /> Validated Architecture Metrics
+                  <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5 font-semibold">
+                    Engineering Metrics:
                   </h4>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                     {project.caseStudy.metrics.map((m, i) => (
-                      <div
-                        key={i}
-                        className="bg-slate-900/90 border border-white/10 rounded-2xl p-3 text-center"
-                      >
-                        <p className="text-xl sm:text-2xl font-black text-white">{m.value}</p>
-                        <p className="text-[11px] text-slate-400 font-mono mt-0.5">{m.label}</p>
+                      <div key={i} className="bg-slate-900/80 border border-white/10 rounded-xl p-3 text-center">
+                        <span className="text-lg sm:text-xl font-extrabold text-cyan-400 font-mono block">
+                          {m.value}
+                        </span>
+                        <span className="text-[10.5px] text-slate-400 font-mono mt-0.5 block">{m.label}</span>
                       </div>
                     ))}
                   </div>
@@ -920,32 +928,32 @@ function CaseStudyModal({ project, isOpen, onClose }) {
 
             {activeTab === "frontend" && (
               <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-5">
-                  <h4 className="text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <Layers className="h-4 w-4 text-cyan-400" />
-                    Client-Side Architecture & State Management
+                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
+                    <Globe className="h-4 w-4 text-cyan-400" />
+                    Frontend Architecture & UI Engineering
                   </h4>
                   <p className="text-slate-300 leading-relaxed">{project.caseStudy.frontend}</p>
                 </div>
 
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-5">
-                  <h5 className="text-xs font-mono uppercase text-slate-400 mb-3">Key Features Implemented:</h5>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                  <h5 className="text-xs font-mono text-slate-400 mb-2 uppercase">Key Interface Features:</h5>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {project.features.map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-200">
-                        <Check className="h-4 w-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                      <div key={i} className="bg-slate-900/60 border border-white/10 rounded-xl p-3 flex items-center gap-2 text-xs text-slate-200">
+                        <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
                         <span>{feat}</span>
-                      </li>
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </div>
             )}
 
             {activeTab === "backend" && (
               <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-5">
-                  <h4 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
                     <Server className="h-4 w-4 text-indigo-400" />
                     RESTful API & Express Controller Design
                   </h4>
@@ -964,8 +972,8 @@ function CaseStudyModal({ project, isOpen, onClose }) {
 
             {activeTab === "database" && (
               <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-5">
-                  <h4 className="text-base font-bold text-white mb-2 flex items-center gap-2">
+                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
+                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
                     <Database className="h-4 w-4 text-emerald-400" />
                     Data Modeling, Indexing & Cloud Deployment
                   </h4>
@@ -989,17 +997,17 @@ function CaseStudyModal({ project, isOpen, onClose }) {
           </div>
 
           {/* Footer Action Buttons */}
-          <div className="px-6 py-4 border-t border-white/10 bg-slate-900/90 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2">
+          <div className="px-5 sm:px-6 py-3.5 sm:py-4 border-t border-white/10 bg-slate-900/90 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-2">
               <a
                 href={project.githubFrontend}
                 target="_blank"
                 rel="noreferrer"
                 data-cursor-text="CODE"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
+                className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
               >
                 <GithubIcon className="h-3.5 w-3.5" />
-                <span>Frontend Repository</span>
+                <span>Frontend Repo</span>
               </a>
 
               {project.githubBackend && (
@@ -1008,10 +1016,10 @@ function CaseStudyModal({ project, isOpen, onClose }) {
                   target="_blank"
                   rel="noreferrer"
                   data-cursor-text="CODE"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
                 >
                   <Server className="h-3.5 w-3.5 text-indigo-400" />
-                  <span>Backend Repository</span>
+                  <span>Backend Repo</span>
                 </a>
               )}
             </div>
@@ -1021,7 +1029,7 @@ function CaseStudyModal({ project, isOpen, onClose }) {
               target="_blank"
               rel="noreferrer"
               data-cursor-text="OPEN ↗"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25 transition-all"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25 transition-all"
             >
               <Globe className="h-3.5 w-3.5" />
               <span>Launch Live Application</span>
@@ -1052,7 +1060,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-28 relative overflow-hidden bg-gradient-to-b from-[#040816] via-[#020914] to-[#040816] text-white"
+      className="py-24 sm:py-32 relative overflow-hidden bg-gradient-to-b from-[#040816] via-[#020914] to-[#040816] text-white select-none"
     >
       {/* Background Orbital Telemetry & Cyan Radar Atmosphere */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
@@ -1061,102 +1069,125 @@ export function Projects() {
           key={activeProject.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="absolute top-1/4 left-1/3 w-[600px] h-[600px] rounded-full blur-[140px] -z-10"
+          transition={{ duration: 0.8 }}
+          className="absolute top-1/4 left-1/3 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] rounded-full blur-[110px] sm:blur-[140px] -z-10"
           style={{ background: activeProject.accentGlow }}
         />
-        <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-sky-600/10 rounded-full blur-[130px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-sky-600/10 rounded-full blur-[100px] sm:blur-[130px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10 space-y-10 sm:space-y-12">
         {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-4xl text-left mb-12"
+          className="max-w-4xl text-left"
         >
           {/* Section Label: 03 / SELECTED WORK */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             <Rocket className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
-            <span>03 / SELECTED WORK • PRODUCTION LAB</span>
+            <span>03 // SELECTED WORK • PRODUCTION LAB</span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl font-black tracking-tight leading-[1.05] uppercase">
+          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] uppercase">
             Things I've{" "}
             <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
               built.
             </span>
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
+          <p className="mt-4 text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
             Scroll-driven case study scenes highlighting end-to-end full-stack architectures, live token authorization, verified REST pipelines, and production deployments.
           </p>
         </motion.div>
 
-        {/* ============ MISSION CONTROL SCENE TIMELINE DOCK ============ */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-10">
-          {projects.map((proj, idx) => {
-            const isSelected = activeSceneIndex === idx;
-            return (
-              <button
-                key={proj.id}
-                onClick={() => setActiveSceneIndex(idx)}
-                className={`relative px-4 sm:px-5 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-mono transition-all duration-300 flex items-center gap-2 ${
-                  isSelected
-                    ? "text-white font-bold shadow-lg shadow-cyan-500/25 border border-cyan-400/40"
-                    : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-white/10 hover:border-cyan-500/30"
-                }`}
-              >
-                {isSelected && (
-                  <motion.div
-                    layoutId="activeSceneTimeline"
-                    className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 rounded-2xl -z-10"
-                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  />
-                )}
-                <span className="font-bold text-cyan-300">{proj.number}</span>
-                <span className="truncate max-w-[130px] sm:max-w-none">{proj.title.split(" ")[0]}</span>
-                {isSelected && (
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-                )}
-              </button>
-            );
-          })}
+        {/* ============ MISSION CONTROL SCENE TIMELINE DOCK (Smooth Mobile Scrubber) ============ */}
+        <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1 max-w-full">
+            {projects.map((proj, idx) => {
+              const isSelected = activeSceneIndex === idx;
+              return (
+                <button
+                  key={proj.id}
+                  onClick={() => setActiveSceneIndex(idx)}
+                  className={`relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-mono transition-all duration-300 flex items-center gap-2 flex-shrink-0 ${
+                    isSelected
+                      ? "text-white font-bold shadow-lg shadow-cyan-500/25 border border-cyan-400/40"
+                      : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-white/10 hover:border-cyan-500/30"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeSceneTimeline"
+                      className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 rounded-2xl -z-10"
+                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                    />
+                  )}
+                  <span className="font-bold text-cyan-300">{proj.number}</span>
+                  <span className="truncate">{proj.title.split(" ")[0]}</span>
+                  {isSelected && (
+                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Quick Arrow Switchers */}
+          <div className="hidden sm:flex items-center gap-1.5 flex-shrink-0">
+            <button
+              onClick={handlePrevScene}
+              aria-label="Previous Project"
+              className="p-2 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+            <span className="font-mono text-xs text-slate-400 px-1">
+              0{activeSceneIndex + 1} / 0{projects.length}
+            </span>
+            <button
+              onClick={handleNextScene}
+              aria-label="Next Project"
+              className="p-2 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
         {/* ============ CINEMATIC PRODUCTION LAB SCENE ============ */}
-        <div className="relative min-h-[580px] rounded-3xl border border-white/10 bg-slate-950/70 backdrop-blur-xl p-6 sm:p-8 lg:p-10 shadow-2xl">
+        <div className="relative rounded-3xl border border-white/15 bg-slate-950/80 backdrop-blur-2xl p-4 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden">
           {/* Top Scene Controls Header */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-8">
-            <div className="flex items-center gap-3">
-              <span className="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono text-xs font-semibold">
+          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 sm:mb-8">
+            <div className="flex items-center gap-2 sm:gap-3">
+              <span className="px-2.5 sm:px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono text-[11px] sm:text-xs font-semibold">
                 SCENE {activeProject.number} / {activeProject.total}
               </span>
-              <span className="text-xs text-slate-400 font-mono hidden sm:inline">
+              <span className="text-[11px] sm:text-xs text-slate-400 font-mono hidden sm:inline">
                 {activeProject.badge}
               </span>
             </div>
 
-            {/* Navigation Arrows */}
-            <div className="flex items-center gap-2">
+            {/* Mobile Prev / Next Buttons */}
+            <div className="flex items-center gap-1 sm:hidden">
               <button
                 onClick={handlePrevScene}
-                aria-label="Previous Project Scene"
-                className="p-2 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
+                aria-label="Previous Project"
+                className="p-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-slate-300"
               >
-                <ChevronLeft className="h-4 w-4" />
+                <ChevronLeft className="h-3.5 w-3.5" />
               </button>
-              <div className="px-2 font-mono text-xs text-slate-400">
-                {activeSceneIndex + 1} of {projects.length}
-              </div>
+              <span className="font-mono text-[10px] text-slate-400 px-1">
+                {activeSceneIndex + 1}/{projects.length}
+              </span>
               <button
                 onClick={handleNextScene}
-                aria-label="Next Project Scene"
-                className="p-2 rounded-xl bg-slate-900/90 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
+                aria-label="Next Project"
+                className="p-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-slate-300"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </button>
             </div>
           </div>
@@ -1165,21 +1196,21 @@ export function Projects() {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeProject.id}
-              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              initial={{ opacity: 0, scale: 0.96, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.94, y: -20 }}
-              transition={{ duration: 0.45, ease: "easeInOut" }}
+              exit={{ opacity: 0, scale: 0.96, y: -15 }}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
               className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
             >
               {/* ============ LEFT COLUMN: Project Details & Data Flow Pipeline ============ */}
-              <div className="lg:col-span-6 flex flex-col text-left space-y-5">
+              <div className="lg:col-span-6 flex flex-col text-left space-y-4 sm:space-y-5">
                 {/* Project Number & Badge */}
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <span className="font-mono text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
                     {activeProject.number}
                   </span>
-                  <span className="text-slate-500 font-mono text-xl">/ {activeProject.total}</span>
-                  <span className="ml-2 inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-semibold bg-white/5 border border-white/10 text-slate-200">
+                  <span className="text-slate-500 font-mono text-lg sm:text-xl">/ {activeProject.total}</span>
+                  <span className="ml-2 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-white/5 border border-white/10 text-slate-200">
                     <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
                     {activeProject.badge}
                   </span>
@@ -1190,7 +1221,7 @@ export function Projects() {
                   <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
                     {activeProject.title}
                   </h3>
-                  <p className="text-sm font-mono text-cyan-300 mt-1">{activeProject.tagline}</p>
+                  <p className="text-xs sm:text-sm font-mono text-cyan-300 mt-1">{activeProject.tagline}</p>
                 </div>
 
                 {/* Auth & Security Highlight Pill */}
@@ -1207,11 +1238,11 @@ export function Projects() {
                 </p>
 
                 {/* ============ ARCHITECTURE DATA FLOW PIPELINE ============ */}
-                <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-3.5 sm:p-4 space-y-2">
-                  <div className="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-3 sm:p-4 space-y-2">
+                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-400">
                     <span className="flex items-center gap-1.5 text-cyan-300 font-bold">
                       <Layers className="h-3.5 w-3.5 text-cyan-400" />
-                      End-to-End Pipeline Architecture
+                      Pipeline Architecture Flow
                     </span>
                     <span className="text-[10px] text-slate-500 hidden sm:inline">
                       Hover step to inspect
@@ -1227,20 +1258,21 @@ export function Projects() {
                           key={idx}
                           onMouseEnter={() => setActiveHoverKey(step.key)}
                           onMouseLeave={() => setActiveHoverKey(null)}
-                          className={`p-2.5 rounded-xl border transition-all cursor-pointer ${
+                          onClick={() => setActiveHoverKey(activeHoverKey === step.key ? null : step.key)}
+                          className={`p-2 sm:p-2.5 rounded-xl border transition-all cursor-pointer ${
                             isHovered
                               ? "bg-cyan-500/20 border-cyan-400 shadow-md shadow-cyan-500/20 text-white"
                               : "bg-slate-950/70 border-white/10 text-slate-300 hover:border-white/20"
                           }`}
                         >
-                          <div className="flex items-center justify-between mb-1 text-[9px] font-mono">
+                          <div className="flex items-center justify-between mb-1 text-[8.5px] sm:text-[9px] font-mono">
                             <span className="text-cyan-400 font-bold">{step.step}</span>
                             <span className="text-slate-500">0{idx + 1}</span>
                           </div>
-                          <p className="text-[11px] font-bold text-white leading-tight truncate">
+                          <p className="text-[10.5px] sm:text-[11px] font-bold text-white leading-tight truncate">
                             {step.label}
                           </p>
-                          <p className="text-[9px] text-slate-400 truncate mt-0.5">{step.sub}</p>
+                          <p className="text-[8.5px] sm:text-[9px] text-slate-400 truncate mt-0.5">{step.sub}</p>
                         </div>
                       );
                     })}
@@ -1249,7 +1281,7 @@ export function Projects() {
 
                 {/* ============ TECHNOLOGY STACK PILLS ============ */}
                 <div>
-                  <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">
+                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">
                     Verified Production Stack:
                   </div>
                   <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -1260,7 +1292,8 @@ export function Projects() {
                           key={tech}
                           onMouseEnter={() => setActiveHoverKey(tech)}
                           onMouseLeave={() => setActiveHoverKey(null)}
-                          className={`px-3 py-1 rounded-xl text-xs font-mono font-medium border transition-all duration-200 ${
+                          onClick={() => setActiveHoverKey(activeHoverKey === tech ? null : tech)}
+                          className={`px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-mono font-medium border transition-all duration-200 ${
                             isHovered
                               ? "bg-cyan-500/25 border-cyan-400 text-white shadow-lg shadow-cyan-500/30 scale-105"
                               : "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:border-white/25"
@@ -1273,13 +1306,13 @@ export function Projects() {
                   </div>
                 </div>
 
-                {/* ============ ACTION BUTTONS ============ */}
-                <div className="pt-2 flex flex-wrap items-center gap-3">
+                {/* ============ ACTION BUTTONS (Clean, Responsive, No Cut-Offs) ============ */}
+                <div className="pt-2 flex flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
                   {/* Case Study Trigger */}
                   <button
                     onClick={() => setSelectedCaseStudy(activeProject)}
                     data-cursor-text="CASE STUDY"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:brightness-110 transition-all"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:brightness-110 active:scale-95 transition-all min-h-[44px]"
                   >
                     <Eye className="h-4 w-4" />
                     <span>Explore Case Study</span>
@@ -1292,7 +1325,7 @@ export function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     data-cursor-text="OPEN ↗"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-sm font-medium shadow-sm transition-all"
+                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
                   >
                     <Globe className="h-4 w-4 text-cyan-400" />
                     <span>Live Demo</span>
@@ -1305,7 +1338,7 @@ export function Projects() {
                     target="_blank"
                     rel="noreferrer"
                     data-cursor-text="CODE"
-                    className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all"
+                    className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
                     title="Frontend Source Code (GitHub)"
                   >
                     <GithubIcon className="h-4 w-4" />
@@ -1319,7 +1352,7 @@ export function Projects() {
                       target="_blank"
                       rel="noreferrer"
                       data-cursor-text="CODE"
-                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all"
+                      className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
                       title="Backend Source Code (GitHub)"
                     >
                       <Server className="h-4 w-4 text-indigo-400" />
@@ -1330,7 +1363,7 @@ export function Projects() {
               </div>
 
               {/* ============ RIGHT COLUMN: 3D Tilt Browser Mockup ============ */}
-              <div className="lg:col-span-6 flex flex-col items-center justify-center">
+              <div className="lg:col-span-6 flex flex-col items-center justify-center w-full">
                 <BrowserSceneMockup
                   project={activeProject}
                   activeHoverKey={activeHoverKey}
@@ -1338,9 +1371,9 @@ export function Projects() {
                 />
 
                 {/* Sub-browser Hint */}
-                <div className="mt-3 flex items-center gap-2 text-xs font-mono text-slate-400">
+                <div className="mt-2 sm:mt-3 flex items-center gap-2 text-[11px] sm:text-xs font-mono text-slate-400">
                   <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
-                  <span>Interactive 3D Preview • Click frame to expand architectural case study</span>
+                  <span>Tap or click frame to inspect architectural case study</span>
                 </div>
               </div>
             </motion.div>
@@ -1348,13 +1381,13 @@ export function Projects() {
         </div>
 
         {/* Bottom All Repositories Link */}
-        <div className="mt-14 text-center">
+        <div className="text-center pt-2">
           <a
             href="https://github.com/anuruddh123"
             target="_blank"
             rel="noreferrer"
             data-cursor-text="GITHUB ↗"
-            className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-lg bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-200 hover:text-white"
+            className="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-lg bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-200 hover:text-white"
           >
             <GithubIcon className="h-4 w-4" />
             <span>Explore All Repositories on GitHub (anuruddh123)</span>
