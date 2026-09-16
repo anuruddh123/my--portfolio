@@ -240,7 +240,24 @@ export function Projects() {
 
         {/* ================= 3D FAN-OUT CAROUSEL ================= */}
         {/* Center card in front, background cards peeking to the left and right */}
-        <div className="relative h-[555px] sm:h-[515px] w-full flex items-center justify-center pt-6">
+        <div className="relative h-[590px] sm:h-[515px] w-full flex items-center justify-center pt-6">
+          {/* Floating Mobile/Quick Navigation Arrow - Left */}
+          <button
+            onClick={handlePrev}
+            aria-label="Previous Project"
+            className="absolute left-0 sm:-left-3 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3 rounded-full bg-slate-950/85 hover:bg-slate-900 border border-white/20 text-white shadow-[0_4px_25px_rgba(0,0,0,0.8)] backdrop-blur-md active:scale-90 transition-all cursor-pointer"
+          >
+            <ChevronLeft className="h-5 w-5 text-slate-200" />
+          </button>
+
+          {/* Floating Mobile/Quick Navigation Arrow - Right */}
+          <button
+            onClick={handleNext}
+            aria-label="Next Project"
+            className="absolute right-0 sm:-right-3 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 border border-indigo-400/40 text-white shadow-[0_4px_25px_rgba(99,102,241,0.5)] backdrop-blur-md active:scale-90 transition-all cursor-pointer"
+          >
+            <ChevronRight className="h-5 w-5 text-white" />
+          </button>
           {projects.map((project, index) => {
             const isFront = index === currentIndex;
             const cardStyles = getCardTransform(index);
@@ -445,31 +462,32 @@ export function Projects() {
 
         {/* ================= STACK NAVIGATION CONTROLS ================= */}
         {/* Next & Previous Buttons + Progress Dots */}
-        <div className="mt-4 flex items-center justify-between gap-4 max-w-2xl sm:max-w-3xl mx-auto pt-2">
+        <div className="mt-5 flex items-center justify-between gap-2 sm:gap-4 max-w-2xl sm:max-w-3xl mx-auto pt-2 px-2">
           {/* Previous Button */}
           <button
             onClick={handlePrev}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-mono text-xs font-semibold shadow-lg transition-all active:scale-95"
+            aria-label="Previous Project"
+            className="flex items-center justify-center gap-1.5 px-3 py-2.5 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-mono text-xs font-semibold shadow-lg transition-all active:scale-95 flex-shrink-0"
           >
             <ChevronLeft className="h-4 w-4" />
-            <span>Previous</span>
+            <span className="hidden sm:inline">Previous</span>
           </button>
 
           {/* Center Indicator Dots */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {projects.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   currentIndex === idx
-                    ? "w-8 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+                    ? "w-6 sm:w-8 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
                     : "w-2 bg-white/20 hover:bg-white/40"
                 }`}
                 aria-label={`Go to project ${idx + 1}`}
               />
             ))}
-            <span className="font-mono text-xs text-slate-400 ml-2">
+            <span className="font-mono text-[11px] sm:text-xs text-slate-400 ml-1 sm:ml-2">
               0{currentIndex + 1} / 0{projects.length}
             </span>
           </div>
@@ -477,9 +495,10 @@ export function Projects() {
           {/* Next Button (Highlighted) */}
           <button
             onClick={handleNext}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 text-white font-mono text-xs font-bold shadow-lg shadow-indigo-500/25 transition-all active:scale-95"
+            aria-label="Next Project"
+            className="flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 text-white font-mono text-xs font-bold shadow-lg shadow-indigo-500/25 transition-all active:scale-95 flex-shrink-0"
           >
-            <span>Next Project</span>
+            <span className="hidden sm:inline">Next Project</span>
             <ChevronRight className="h-4 w-4" />
           </button>
         </div>
