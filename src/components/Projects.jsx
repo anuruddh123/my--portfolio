@@ -1,295 +1,127 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence, useMotionValue, useTransform, useSpring } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
-  ExternalLink,
-  Check,
-  Rocket,
-  ShieldCheck,
-  Server,
-  Globe,
-  Layers,
-  ArrowUpRight,
-  ArrowRight,
   ChevronLeft,
   ChevronRight,
-  X,
-  Database,
+  ExternalLink,
+  Check,
+  Sparkles,
+  Eye,
+  Server,
   Lock,
   Activity,
-  Terminal,
-  Maximize2,
-  Radio,
-  Eye,
-  FileText,
-  ShoppingCart,
-  UtensilsCrossed,
-  Sparkles,
+  ArrowRight,
+  Layers,
+  ShieldCheck,
 } from "lucide-react";
 
-// Real Projects Data Preserved 100%
+// All 4 production projects (Ordered: PulseChat 1st, E-commerce 2nd, News 3rd, AI Resume Builder 4th)
 const projects = [
   {
-    id: "resume-tailor",
-    number: "01",
-    total: "04",
-    title: "Resume Tailor Application",
-    category: "ai-ats",
-    badge: "Featured • AI & ATS",
-    authHighlight: "JWT Authentication & Role-Based Authorization (RBAC)",
-    tagline: "Intelligent ATS Resume Optimization Engine & PDF Generator",
+    id: "pulsechat",
+    indexNum: "01",
+    title: "PulseChat — Real-Time Chat App",
+    slug: "chatappsssss.netlify.app",
     description:
-      "A complete full-stack ATS resume tailoring and optimization platform. Analyzes resumes against job descriptions to extract missing keywords and boost ATS scores. Built with secure JWT Authentication & Role-Based Authorization (RBAC), protected user profiles, saved resume versions, and real-time PDF generation.",
+      "High-throughput messaging platform featuring instant bi-directional Socket.IO communication, room conversations, real-time online presence detection, and secure MongoDB chat persistence.",
+    highlight: "⚡ Socket.IO • WebSockets • < 10ms Latency",
     features: [
-      "JWT Authentication & Role-Based Authorization (RBAC)",
-      "Protected User Dashboard & Tailored Resume History",
-      "AI-Powered Keyword Gap Analysis & ATS Scoring",
-      "Real-Time Resume Preview & Instant PDF Export",
+      "Instant Bi-Directional Socket.IO Messaging",
+      "Public Rooms & Private 1-on-1 Discussions",
+      "Real-Time Online Presence & Typing State Indicators",
+      "Persistent Chat History with MongoDB",
     ],
-    stack: [
-      "MongoDB",
-      "Express.js",
-      "React.js",
-      "Node.js",
-      "JWT Auth",
-      "Tailwind CSS",
-      "REST APIs",
-    ],
-    githubFrontend: "https://github.com/anuruddh123/resume_builder",
-    githubBackend: null, // Backend repo removed as explicitly requested
-    demo: "https://resume-craftss.netlify.app/",
-    domain: "resume-craftss.netlify.app",
-    accentColor: "#6366f1",
-    accentGlow: "rgba(99, 102, 241, 0.25)",
-    emoji: "📄",
-    pipeline: [
-      { step: "Client", label: "React 18 + Tailwind", sub: "User Profile & Job Description Input", key: "React.js" },
-      { step: "Auth Guard", label: "JWT Bearer Token", sub: "RBAC Middleware & Session Protection", key: "JWT Auth" },
-      { step: "API Gateway", label: "Express Controller", sub: "ATS Gap Analysis & Scoring Engine", key: "Express.js" },
-      { step: "Data Store", label: "MongoDB Atlas", sub: "User Schema & Resume History Snapshots", key: "MongoDB" },
-    ],
-    telemetry: {
-      live: "200 OK • Production Live",
-      auth: "JWT RBAC Active",
-      api: "REST API v1.4",
-      database: "MongoDB Atlas Connected",
-      metric: "94% ATS Match Rate",
-    },
-    caseStudy: {
-      problem:
-        "Job seekers struggle to get past automated Applicant Tracking Systems (ATS) because standard resumes lack specific keyword alignments and proper schema structures required by enterprise HR software.",
-      solution:
-        "Engineered an intelligent end-to-end ATS tailoring platform that computes algorithmic similarity scores between candidate resumes and target job descriptions, identifies critical skill deficits, and dynamically generates ATS-optimized documents with one-click export.",
-      frontend:
-        "Developed using React 18, Tailwind CSS, and Framer Motion. Features a live ATS circular match gauge, interactive skill gap tag analyzer, dynamic resume template previewer, and instant client-side PDF export without external watermarks.",
-      backend:
-        "Architected a high-throughput Express.js REST API with modular controllers, JWT token validation middleware, role-based authorization guards, and custom keyword tokenization routines.",
-      database:
-        "Designed normalized MongoDB schemas with Mongoose, storing versioned resume snapshots, user auth credentials, and target job telemetry with optimized indexing for sub-100ms response times.",
-      metrics: [
-        { label: "ATS Score Boost", value: "+38%" },
-        { label: "Keyword Analysis", value: "<120ms" },
-        { label: "PDF Export Time", value: "Instant" },
-        { label: "Auth Protocol", value: "JWT + RBAC" },
-      ],
-    },
+    stack: ["React.js", "Node.js", "Express", "MongoDB", "Socket.IO", "Tailwind CSS"],
+    githubFrontend: "https://github.com/anuruddh123/pulsechat-frontend",
+    githubBackend: "https://github.com/anuruddh123/pulsechat-backend",
+    demo: "https://chatappsssss.netlify.app/",
+    gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+    bgGradient: "from-emerald-500/20 via-teal-500/10 to-cyan-500/5",
+    accentColor: "#10B981",
+    emoji: "💬",
+    badge: "Full Stack MERN",
   },
   {
     id: "ecommerce",
-    number: "02",
-    total: "04",
-    title: "Full Stack E-commerce App",
-    category: "mern",
-    badge: "Full Stack MERN",
-    authHighlight: "Token-Based Auth & Admin Authorization",
-    tagline: "Scalable Shopping Ecosystem with Real-Time Cart State",
+    indexNum: "02",
+    title: "Full Stack E-commerce Platform",
+    slug: "shopvistaaa.netlify.app",
     description:
-      "A robust full-stack shopping platform with end-to-end product management, shopping cart state management, secure token-based authentication, admin inventory control, and RESTful APIs constructed with Express and MongoDB.",
+      "Production-grade online shopping platform with dynamic catalog browsing, multi-item shopping cart state, token-based JWT authentication, and admin product CRUD management.",
+    adminCredentials: {
+      email: "admin@shopvista.com",
+      password: "admin123",
+    },
+    highlight: "🛒 Storefront & Admin Portal • Full CRUD • Cart State",
     features: [
-      "JWT Authentication & Admin Role Authorization",
-      "Cart & Order Management with Real-Time Totaling",
-      "Product Catalog with Category Filter & Search",
-      "Scalable MongoDB Schema & Token-Verified APIs",
+      "JWT Auth & Role-Protected Admin Routes",
+      "Dynamic Product Catalog & Category Filtering",
+      "Shopping Cart & Multi-Step Checkout Flow",
+      "Dedicated Admin Product & Inventory Dashboard",
     ],
-    stack: [
-      "MongoDB",
-      "Express.js",
-      "React.js",
-      "Node.js",
-      "JWT Auth",
-      "Tailwind CSS",
-    ],
+    stack: ["React.js", "Node.js", "Express", "MongoDB", "Tailwind CSS", "REST APIs"],
     githubFrontend: "https://github.com/anuruddh123/ecommerce",
-    githubBackend: "https://github.com/anuruddh123/ecommerce", // Updated as requested
+    githubBackend: "https://github.com/anuruddh123/ecommerce",
     demo: "https://shopvistaaa.netlify.app/",
-    domain: "shopvistaaa.netlify.app",
-    accentColor: "#10b981",
-    accentGlow: "rgba(16, 185, 129, 0.25)",
+    adminDemo: "https://shopvista-admin.netlify.app/",
+    gradient: "from-indigo-600 via-blue-600 to-cyan-600",
+    bgGradient: "from-indigo-500/20 via-blue-500/10 to-cyan-500/5",
+    accentColor: "#3B82F6",
     emoji: "🛒",
-    pipeline: [
-      { step: "Client", label: "React + Context API", sub: "Live Cart State & Product Grid", key: "React.js" },
-      { step: "Security", label: "Token Verification", sub: "Protects Customer & Admin Orders", key: "JWT Auth" },
-      { step: "API Gateway", label: "Express REST Router", sub: "Order Ingestion & Pricing Calcs", key: "Express.js" },
-      { step: "Data Store", label: "MongoDB Collections", sub: "Products, Carts, Orders, Users", key: "MongoDB" },
-    ],
-    telemetry: {
-      live: "200 OK • Deployed on Netlify",
-      auth: "Admin + Customer RBAC",
-      api: "Express REST APIs",
-      database: "MongoDB Schema Indexed",
-      metric: "Sub-50ms Cart Sync",
-    },
-    caseStudy: {
-      problem:
-        "Modern online shoppers require instantaneous cart recalculations, responsive product filtering, and frictionless checkout while store managers need role-protected inventory controls.",
-      solution:
-        "Engineered a scalable full-stack e-commerce engine with dual customer/admin roles, client-side optimistic cart synchronization, server-validated product totals, and automated inventory depletion.",
-      frontend:
-        "Built with React and Tailwind CSS featuring dynamic search debouncing, multi-filter category chips, responsive checkout drawers, and optimistic cart updates for instant tactile feedback.",
-      backend:
-        "Constructed an Express.js backend with robust validation middleware, route-level authorization barriers separating customer carts from administrator product catalogues, and standardized JSON error payloads.",
-      database:
-        "Engineered a scalable MongoDB schema modeling products, active user sessions, order history, and categorized inventories with compound indexes for rapid query resolution.",
-      metrics: [
-        { label: "Cart State Consistency", value: "100%" },
-        { label: "API Response Latency", value: "<75ms" },
-        { label: "Role Separation", value: "Customer / Admin" },
-        { label: "Database Engine", value: "MongoDB Atlas" },
-      ],
-    },
+    badge: "Full Stack MERN",
   },
   {
     id: "news-alerts",
-    number: "03",
-    total: "04",
-    title: "Real Time News & Alert Platform",
-    category: "realtime",
-    badge: "Real-Time MERN",
-    authHighlight: "User Auth & Admin Publishing Roles",
-    tagline: "Low-Latency Event Broadcasting with Socket.IO & Express",
+    indexNum: "03",
+    title: "Real-Time News & Alert Hub",
+    slug: "news-alertss.netlify.app",
     description:
-      "A high-performance news application delivering real-time news alerts using Socket.IO, category-based filtering, keyword search, token authentication, and a secure admin editorial portal for publishing breaking news updates.",
+      "Live news publishing hub delivering real-time breaking alerts, category feeds, instant keyword search, and administrative publishing backed by a scalable MERN API.",
+    highlight: "📡 Live Broadcasting • Category Feeds • Admin",
     features: [
-      "User Authentication & Session Management",
-      "Real-Time Alert Broadcasting with Socket.IO",
-      "Live News Category Filtering & Instant Search",
-      "Admin News Management & Verification Dashboard",
+      "JWT User Auth & Admin Editorial Portal",
+      "Real-Time Breaking Alerts & Live News Feeds",
+      "Category Search & Fast Query Indexing Engine",
+      "Scalable Express REST API with MongoDB Collections",
     ],
-    stack: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "JWT",
-      "Socket.IO",
-      "REST APIs",
-    ],
+    stack: ["React.js", "Node.js", "Express", "MongoDB", "Socket.IO", "REST APIs"],
     githubFrontend: "https://github.com/anuruddh123/news-alerts-frontend",
     githubBackend: "https://github.com/anuruddh123/news-alerts-backend",
     demo: "https://news-alertss.netlify.app",
-    domain: "news-alertss.netlify.app",
-    accentColor: "#8b5cf6",
-    accentGlow: "rgba(139, 92, 246, 0.25)",
+    gradient: "from-violet-600 via-purple-600 to-fuchsia-600",
+    bgGradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-500/5",
+    accentColor: "#8B5CF6",
     emoji: "🌐",
-    pipeline: [
-      { step: "Client", label: "React + Socket Listener", sub: "Live Broadcast Alert Ticker", key: "React.js" },
-      { step: "Event Bus", label: "Socket.IO Engine", sub: "Bi-Directional Event Propagation", key: "Socket.IO" },
-      { step: "Server", label: "Node & Express Backend", sub: "Admin Editorial & Alert Dispatch", key: "Express.js" },
-      { step: "Data Store", label: "MongoDB Atlas Cluster", sub: "Time-Series News Feeds & Users", key: "MongoDB" },
-    ],
-    telemetry: {
-      live: "200 OK • WebSocket Connected",
-      auth: "Editorial JWT Active",
-      api: "Socket.IO + REST v2",
-      database: "MongoDB Real-Time Stream",
-      metric: "12ms Broadcast Latency",
-    },
-    caseStudy: {
-      problem:
-        "Traditional polling-based news websites suffer from high server overhead, delayed breaking news notifications, and high database connection exhaustion during traffic surges.",
-      solution:
-        "Implemented an event-driven broadcast architecture combining Socket.IO duplex channels with RESTful endpoints, ensuring readers receive breaking bulletins in sub-20ms with minimal network footprint.",
-      frontend:
-        "Created an ambient, high-contrast dark newsroom UI in React with live ticker animations, instant category switching, search-as-you-type, and push notification toasts.",
-      backend:
-        "Engineered dual-layer Node.js backend running Express for CRUD news authoring and Socket.IO for publishing event rooms, throttled event broadcasting, and JWT-authenticated editorial desks.",
-      database:
-        "MongoDB time-sorted article collection with TTL indexes for ephemeral alerts and text indexes enabling rapid full-text news searches across historical archives.",
-      metrics: [
-        { label: "Broadcast Latency", value: "<20ms" },
-        { label: "Connection Protocol", value: "WebSocket / WSS" },
-        { label: "Editorial Gate", value: "JWT Protected" },
-        { label: "Feed Ingestion", value: "Automated" },
-      ],
-    },
+    badge: "Full Stack MERN",
   },
   {
-    id: "quickbite",
-    number: "04",
-    total: "04",
-    title: "QuickBite Restaurant App",
-    category: "mern",
-    badge: "Hero Project • MERN Restaurant App",
-    authHighlight: "JWT Auth & Role-Based Dashboards",
-    tagline: "End-to-End Culinary Ordering & Live Kitchen Workflow",
+    id: "resume-builder",
+    indexNum: "04",
+    title: "AI Resume Builder",
+    slug: "resume-craftss.netlify.app",
     description:
-      "A comprehensive food ordering web application with customer menu browsing, real-time cart handling, order status tracking, and a full-featured admin dashboard for managing food menus, pricing, and active customer orders.",
+      "AI-powered resume platform built with Next.js featuring customizable ATS-compliant templates, automated content generation, instant preview, and PDF export.",
+    highlight: "★ Next.js • AI API • ATS Optimization",
     features: [
-      "JWT Authentication & Role-Based Access Control",
-      "Dynamic Cart & Online Order Placement",
-      "Admin Menu CRUD & Real-Time Order Management",
-      "Optimized MongoDB Aggregation & Scalable API",
+      "AI-Powered Content Generation & Optimization",
+      "ATS-Friendly Next.js Templates & Layouts",
+      "Real-Time Instant Preview & Document Editing",
+      "Single-Click PDF Compilation & Export",
     ],
-    stack: [
-      "React.js",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "JWT",
-      "Tailwind CSS",
-    ],
-    githubFrontend: "https://github.com/anuruddh123/quick-bite",
-    githubBackend: null, // Backend repo removed as explicitly requested
-    demo: "https://quickbiterest.netlify.app/",
-    domain: "quickbiterest.netlify.app",
-    accentColor: "#f59e0b",
-    accentGlow: "rgba(245, 158, 11, 0.25)",
-    emoji: "👨‍🍳",
-    pipeline: [
-      { step: "Client", label: "React Menu & Cart Store", sub: "Dish Customizer & Order Form", key: "React.js" },
-      { step: "Security", label: "JWT Role Middleware", sub: "Separates Diners from Kitchen Staff", key: "JWT" },
-      { step: "Backend", label: "Express Order Dispatch", sub: "Kitchen Queue & Status Machine", key: "Express.js" },
-      { step: "Data Store", label: "MongoDB Aggregation", sub: "Menu Categories & Live Tickets", key: "MongoDB" },
-    ],
-    telemetry: {
-      live: "200 OK • Deployed on Netlify",
-      auth: "Kitchen & Diner Roles",
-      api: "Express REST Order API",
-      database: "MongoDB Aggregation Ready",
-      metric: "Live Order Status Sync",
-    },
-    caseStudy: {
-      problem:
-        "Restaurants require a streamlined digital ordering workflow that connects diners' custom culinary choices directly to kitchen management without latency or order discrepancies.",
-      solution:
-        "Developed an all-in-one culinary ordering portal featuring customized menu selection, synchronized shopping carts, order status transitions (Received -> In Kitchen -> Dispatched), and a secure administrative kitchen console.",
-      frontend:
-        "Built with React and Tailwind CSS featuring appetizing visual food cards, category filter tabs, interactive item quantity steppers, and dynamic order confirmation dialogues.",
-      backend:
-        "Node.js and Express REST API architecture with role-based routing protecting kitchen operations, atomic status update controllers, and payload input validation.",
-      database:
-        "Optimized MongoDB schema leveraging aggregation pipelines to retrieve categorized menu items, calculate sales metrics, and persist active order tickets.",
-      metrics: [
-        { label: "Order Lifecycle", value: "3-Stage Tracking" },
-        { label: "Menu CRUD Suite", value: "100% Dynamic" },
-        { label: "Cart Engine", value: "Instant Calcs" },
-        { label: "Dashboard Roles", value: "Customer / Admin" },
-      ],
-    },
+    stack: ["Next.js", "React.js", "Tailwind CSS", "AI API"],
+    githubFrontend: "https://github.com/anuruddh123/resume_builder",
+    githubBackend: null, // Frontend-only Next.js app
+    demo: "https://resume-craftss.netlify.app/",
+    gradient: "from-blue-600 via-indigo-600 to-purple-600",
+    bgGradient: "from-blue-500/20 via-indigo-500/10 to-purple-500/5",
+    accentColor: "#6366F1",
+    emoji: "📄",
+    badge: "Next.js AI App",
   },
 ];
 
 // Custom GitHub SVG Icon
-function GithubIcon({ className = "h-4 w-4" }) {
+function GithubIcon({ className }) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className={className} aria-hidden="true">
       <path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56v-2.01c-3.2.7-3.88-1.37-3.88-1.37-.53-1.34-1.3-1.7-1.3-1.7-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.79 2.73 1.27 3.4.97.11-.75.41-1.27.74-1.56-2.55-.29-5.23-1.28-5.23-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.46.11-3.05 0 0 .98-.31 3.2 1.18a11.1 11.1 0 0 1 5.83 0c2.22-1.49 3.2-1.18 3.2-1.18.63 1.59.23 2.76.11 3.05.75.81 1.2 1.84 1.2 3.1 0 4.43-2.69 5.41-5.25 5.69.41.36.78 1.06.78 2.14v3.17c0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" />
@@ -297,1111 +129,374 @@ function GithubIcon({ className = "h-4 w-4" }) {
   );
 }
 
-// Simulated High-Fidelity Browser Canvas Previews (Mobile-Fluid & Desktop-Crisp)
-function BrowserMockupScreen({ project }) {
-  if (project.id === "resume-tailor") {
-    return (
-      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
-        {/* Top App Header */}
-        <div className="flex items-center justify-between border-b border-indigo-500/20 pb-2.5">
-          <div className="flex items-center gap-2">
-            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
-              RT
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">ResumeTailor AI</p>
-              <p className="text-[9px] sm:text-[10px] text-indigo-400 font-mono">ATS Match Engine v2.4</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              Role: Developer
-            </span>
-          </div>
-        </div>
-
-        {/* Middle Canvas: ATS Score & Keyword Detection */}
-        <div className="grid grid-cols-1 sm:grid-cols-12 gap-2.5 sm:gap-3 my-auto py-2">
-          {/* Score Circular Gauge */}
-          <div className="sm:col-span-5 bg-indigo-950/40 border border-indigo-500/20 rounded-xl p-2.5 sm:p-3 flex sm:flex-col items-center justify-around sm:justify-center text-center gap-2 sm:gap-0">
-            <div className="relative h-14 w-14 sm:h-16 sm:w-16 flex items-center justify-center">
-              <svg className="h-14 w-14 sm:h-16 sm:w-16 -rotate-90" viewBox="0 0 36 36">
-                <path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="rgba(255,255,255,0.1)"
-                  strokeWidth="3.5"
-                />
-                <path
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                  fill="none"
-                  stroke="#6366f1"
-                  strokeDasharray="94, 100"
-                  strokeWidth="3.5"
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center">
-                <span className="text-sm sm:text-base font-extrabold text-white">94%</span>
-                <span className="text-[7px] sm:text-[8px] text-indigo-300 font-mono">ATS SCORE</span>
-              </div>
-            </div>
-            <div className="sm:mt-2 text-left sm:text-center">
-              <p className="text-[10px] sm:text-[11px] font-semibold text-emerald-400">High Match Potential</p>
-              <p className="text-[8.5px] text-slate-400 font-mono">Analyzed against Job Req</p>
-            </div>
-          </div>
-
-          {/* Keywords & Gap Analysis */}
-          <div className="sm:col-span-7 bg-slate-900/80 border border-white/10 rounded-xl p-2.5 sm:p-3 flex flex-col justify-between">
-            <div>
-              <p className="text-[9px] sm:text-[10px] font-mono text-slate-400 uppercase tracking-wider mb-1.5 flex items-center gap-1">
-                <Check className="h-3 w-3 text-emerald-400" />
-                Detected Keyword Alignments
-              </p>
-              <div className="flex flex-wrap gap-1">
-                {["React.js", "Node.js", "REST APIs", "JWT Auth", "MongoDB", "Tailwind"].map((kw) => (
-                  <span
-                    key={kw}
-                    className="px-1.5 py-0.5 rounded bg-indigo-500/20 border border-indigo-500/30 text-indigo-200 text-[8.5px] sm:text-[9px] font-mono"
-                  >
-                    {kw}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="mt-2 pt-1.5 border-t border-white/5 flex items-center justify-between text-[9px] sm:text-[10px]">
-              <span className="text-slate-400 font-mono">PDF Schema Export</span>
-              <span className="text-emerald-400 font-bold flex items-center gap-1">
-                <FileText className="h-3 w-3" /> Ready
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Interactive Bar */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
-          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
-            <ShieldCheck className="h-3.5 w-3.5 text-indigo-400 flex-shrink-0" />
-            <span className="font-mono truncate">JWT Bearer Authenticated</span>
-          </div>
-          <span className="px-2 py-0.5 rounded bg-indigo-600 text-white font-medium flex-shrink-0">
-            Live Preview
-          </span>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.id === "ecommerce") {
-    return (
-      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
-        {/* Storefront Navigation */}
-        <div className="flex items-center justify-between border-b border-emerald-500/20 pb-2.5">
-          <div className="flex items-center gap-2">
-            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-emerald-600 to-teal-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
-              SV
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">ShopVista Store</p>
-              <p className="text-[9px] sm:text-[10px] text-emerald-400 font-mono">Full-Stack MERN Hub</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="px-2 py-0.5 sm:py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[9.5px] sm:text-[10px] font-mono flex items-center gap-1.5">
-              <ShoppingCart className="h-3 w-3 text-emerald-400" />
-              <span>Cart: 3 items</span>
-              <span className="font-bold text-white">$149</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Store Catalog Grid */}
-        <div className="grid grid-cols-3 gap-2 sm:gap-2.5 my-auto py-2">
-          {[
-            { name: "Pro Headset", price: "$79", tag: "Audio", emoji: "🎧" },
-            { name: "Mech Keys", price: "$49", tag: "Gear", emoji: "⌨️" },
-            { name: "Ergo Mouse", price: "$21", tag: "Desk", emoji: "🖱️" },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="bg-slate-900/90 border border-white/10 rounded-xl p-2 sm:p-2.5 flex flex-col justify-between"
-            >
-              <div>
-                <div className="h-8 sm:h-10 rounded-lg bg-gradient-to-br from-emerald-950/60 to-slate-900 border border-emerald-500/20 flex items-center justify-center text-base sm:text-lg mb-1 sm:mb-1.5">
-                  {item.emoji}
-                </div>
-                <p className="text-[10px] sm:text-[11px] font-bold text-white leading-snug truncate">{item.name}</p>
-                <p className="text-[8.5px] sm:text-[9px] text-emerald-400 font-mono">{item.tag}</p>
-              </div>
-              <div className="mt-1.5 sm:mt-2 flex items-center justify-between">
-                <span className="text-[10px] sm:text-[11px] font-extrabold text-white">{item.price}</span>
-                <span className="px-1.5 py-0.5 rounded bg-emerald-600/30 text-emerald-300 text-[8px] sm:text-[8.5px] font-mono">
-                  + Cart
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Bottom Cart Status */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
-          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse flex-shrink-0" />
-            <span className="font-mono truncate">Express REST • MongoDB Index</span>
-          </div>
-          <span className="text-emerald-400 font-mono font-medium flex-shrink-0">Admin RBAC</span>
-        </div>
-      </div>
-    );
-  }
-
-  if (project.id === "news-alerts") {
-    return (
-      <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
-        {/* Newsroom Topbar */}
-        <div className="flex items-center justify-between border-b border-purple-500/20 pb-2.5">
-          <div className="flex items-center gap-2">
-            <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-violet-600 to-fuchsia-600 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
-              <Radio className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-white animate-pulse" />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-white leading-tight">NewsWire Live</p>
-              <p className="text-[9px] sm:text-[10px] text-purple-400 font-mono">Socket.IO Broadcast Room</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="px-2 py-0.5 rounded-full bg-rose-500/20 border border-rose-500/40 text-rose-300 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
-              <span className="h-1.5 w-1.5 rounded-full bg-rose-500 animate-ping" />
-              LIVE STREAM
-            </span>
-          </div>
-        </div>
-
-        {/* Live News Bulletins */}
-        <div className="space-y-2 my-auto py-2">
-          <div className="bg-gradient-to-r from-purple-950/60 to-slate-900 border border-purple-500/30 rounded-xl p-2 sm:p-2.5">
-            <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-purple-300 mb-1">
-              <span className="bg-purple-500/20 px-1.5 py-0.5 rounded text-purple-200 uppercase font-bold">
-                BREAKING FLASH
-              </span>
-              <span>Just Now • WebSocket</span>
-            </div>
-            <p className="text-[10.5px] sm:text-[11px] font-semibold text-white leading-snug line-clamp-2">
-              Next-Gen Event-Driven Web Architectures Reduce Latency to Sub-15ms
-            </p>
-          </div>
-
-          <div className="bg-slate-900/80 border border-white/10 rounded-xl p-2 sm:p-2.5">
-            <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-slate-400 mb-1">
-              <span className="bg-slate-800 px-1.5 py-0.5 rounded text-slate-300 uppercase">
-                Economy & Tech
-              </span>
-              <span>2m ago • Verified</span>
-            </div>
-            <p className="text-[10.5px] sm:text-[11px] font-semibold text-slate-200 leading-snug truncate">
-              Full-Stack Application Scale Surges Worldwide
-            </p>
-          </div>
-        </div>
-
-        {/* Telemetry Footer */}
-        <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
-          <div className="flex items-center gap-1.5 sm:gap-2 text-purple-300 font-mono truncate">
-            <Activity className="h-3.5 w-3.5 text-purple-400 animate-pulse flex-shrink-0" />
-            <span className="truncate">Latency: 12ms (Socket Duplex)</span>
-          </div>
-          <span className="text-slate-400 font-mono flex-shrink-0">Admin Portal</span>
-        </div>
-      </div>
-    );
-  }
-
-  // QuickBite Restaurant App (Scene 04)
-  return (
-    <div className="h-full w-full bg-slate-950 p-3 sm:p-4 flex flex-col justify-between select-none text-left font-sans">
-      {/* QuickBite Navigation */}
-      <div className="flex items-center justify-between border-b border-amber-500/20 pb-2.5">
-        <div className="flex items-center gap-2">
-          <div className="h-6 w-6 sm:h-7 sm:w-7 rounded-lg bg-gradient-to-tr from-amber-500 to-rose-500 flex items-center justify-center text-white text-[11px] sm:text-xs font-bold shadow-md">
-            QB
-          </div>
-          <div>
-            <p className="text-xs font-bold text-white leading-tight">QuickBite Kitchen</p>
-            <p className="text-[9px] sm:text-[10px] text-amber-400 font-mono">Live Order Lifecycle Engine</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="px-2 py-0.5 rounded-full bg-amber-500/20 border border-amber-500/40 text-amber-300 text-[9px] sm:text-[10px] font-mono flex items-center gap-1">
-            <UtensilsCrossed className="h-3 w-3 text-amber-400" />
-            Order #QB-8492
-          </span>
-        </div>
-      </div>
-
-      {/* Culinary Workflow & Live Pipeline */}
-      <div className="my-auto py-2 space-y-2">
-        {/* Order Progress Tracker */}
-        <div className="bg-slate-900/90 border border-amber-500/30 rounded-xl p-2 sm:p-2.5">
-          <div className="flex items-center justify-between text-[8.5px] sm:text-[9px] font-mono text-slate-300 mb-1.5">
-            <span>Order Status:</span>
-            <span className="text-amber-400 font-bold">PREPARING IN KITCHEN</span>
-          </div>
-          <div className="grid grid-cols-3 gap-1.5 text-center text-[8.5px] sm:text-[9px] font-mono">
-            <div className="py-1 px-1 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-semibold">
-              ✓ Confirmed
-            </div>
-            <div className="py-1 px-1 rounded bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold animate-pulse">
-              ● Cooking
-            </div>
-            <div className="py-1 px-1 rounded bg-slate-800 text-slate-400">
-              ○ Dispatch
-            </div>
-          </div>
-        </div>
-
-        {/* Dish Items Preview */}
-        <div className="grid grid-cols-2 gap-1.5 sm:gap-2">
-          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-1.5 sm:p-2 flex items-center gap-2">
-            <span className="text-base sm:text-xl">🍔</span>
-            <div className="min-w-0">
-              <p className="text-[10px] sm:text-[10.5px] font-bold text-white truncate">Gourmet Burger</p>
-              <p className="text-[8.5px] sm:text-[9px] text-amber-400 font-mono">$12.50 • Qty: 2</p>
-            </div>
-          </div>
-          <div className="bg-slate-900/70 border border-white/10 rounded-lg p-1.5 sm:p-2 flex items-center gap-2">
-            <span className="text-base sm:text-xl">🍕</span>
-            <div className="min-w-0">
-              <p className="text-[10px] sm:text-[10.5px] font-bold text-white truncate">Truffle Pizza</p>
-              <p className="text-[8.5px] sm:text-[9px] text-amber-400 font-mono">$18.00 • Qty: 1</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Bottom Kitchen Console Bar */}
-      <div className="bg-slate-900/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1.5 sm:py-2 flex items-center justify-between text-[9.5px] sm:text-[10px]">
-        <div className="flex items-center gap-1.5 sm:gap-2 text-slate-300 truncate">
-          <ShieldCheck className="h-3.5 w-3.5 text-amber-400 flex-shrink-0" />
-          <span className="font-mono truncate">Role: Kitchen Admin & Customer</span>
-        </div>
-        <span className="text-amber-400 font-mono font-bold flex-shrink-0">MERN Live</span>
-      </div>
-    </div>
-  );
-}
-
-// 3D Tilt Browser Mockup Component with Zero Mobile Overflow
-function BrowserSceneMockup({
-  project,
-  activeHoverKey,
-  onOpenCaseStudy,
-}) {
-  const containerRef = useRef(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const mouseXSpring = useSpring(x, { stiffness: 250, damping: 25 });
-  const mouseYSpring = useSpring(y, { stiffness: 250, damping: 25 });
-
-  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["7deg", "-7deg"]);
-  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-7deg", "7deg"]);
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseMove = (e) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-    x.set(mouseX / width - 0.5);
-    y.set(mouseY / height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-    setIsHovered(false);
-  };
-
-  return (
-    <div
-      ref={containerRef}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className="relative w-full max-w-[560px] mx-auto py-2 sm:py-6 select-none"
-      style={{ perspective: 1200 }}
-    >
-      {/* Background Orbital Glow Ambient */}
-      <div
-        className="pointer-events-none absolute inset-0 -z-10 rounded-3xl blur-3xl opacity-35 transition-all duration-700"
-        style={{
-          background: `radial-gradient(circle, ${project.accentColor} 0%, transparent 70%)`,
-        }}
-      />
-
-      {/* ============ DESKTOP-ONLY FLOATING TELEMETRY (Hidden on Mobile to eliminate overflow) ============ */}
-      {/* 1. LIVE Indicator - Top Left */}
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-        className={`hidden sm:flex absolute -top-3 -left-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-2 backdrop-blur-md shadow-xl transition-all duration-300 ${
-          activeHoverKey === "Live" || activeHoverKey === "React.js"
-            ? "scale-110 ring-2 ring-emerald-400 bg-emerald-500/30 text-white shadow-emerald-500/50"
-            : "bg-slate-900/90 border border-emerald-500/40 text-emerald-300 shadow-black/60"
-        }`}
-      >
-        <span className="relative flex h-2.5 w-2.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-        </span>
-        <span>LIVE</span>
-        <span className="text-[10px] text-emerald-400/80">• 200 OK</span>
-      </motion.div>
-
-      {/* 2. AUTH Indicator - Top Right */}
-      <motion.div
-        animate={{ y: [0, 6, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-        className={`hidden sm:flex absolute -top-3 -right-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
-          activeHoverKey === "JWT Auth" || activeHoverKey === "JWT" || activeHoverKey === "Auth Guard"
-            ? "scale-110 ring-2 ring-indigo-400 bg-indigo-500/30 text-white shadow-indigo-500/50"
-            : "bg-slate-900/90 border border-indigo-500/40 text-indigo-300 shadow-black/60"
-        }`}
-      >
-        <ShieldCheck className="h-3.5 w-3.5 text-indigo-400" />
-        <span>AUTH</span>
-        <span className="text-[10px] text-indigo-400/80">• JWT/RBAC</span>
-      </motion.div>
-
-      {/* 3. API Indicator - Bottom Left */}
-      <motion.div
-        animate={{ y: [0, -5, 0] }}
-        transition={{ duration: 4.2, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        className={`hidden sm:flex absolute -bottom-3 -left-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
-          activeHoverKey === "Express.js" || activeHoverKey === "REST APIs" || activeHoverKey === "Socket.IO" || activeHoverKey === "API Gateway"
-            ? "scale-110 ring-2 ring-cyan-400 bg-cyan-500/30 text-white shadow-cyan-500/50"
-            : "bg-slate-900/90 border border-cyan-500/40 text-cyan-300 shadow-black/60"
-        }`}
-      >
-        <Server className="h-3.5 w-3.5 text-cyan-400" />
-        <span>API</span>
-        <span className="text-[10px] text-cyan-400/80">• Express REST</span>
-      </motion.div>
-
-      {/* 4. DATABASE Indicator - Bottom Right */}
-      <motion.div
-        animate={{ y: [0, 5, 0] }}
-        transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
-        className={`hidden sm:flex absolute -bottom-3 -right-5 z-20 px-3 py-1.5 rounded-full text-xs font-mono font-bold items-center gap-1.5 backdrop-blur-md shadow-xl transition-all duration-300 ${
-          activeHoverKey === "MongoDB" || activeHoverKey === "Data Store"
-            ? "scale-110 ring-2 ring-emerald-400 bg-emerald-500/30 text-white shadow-emerald-500/50"
-            : "bg-slate-900/90 border border-emerald-500/40 text-emerald-300 shadow-black/60"
-        }`}
-      >
-        <Database className="h-3.5 w-3.5 text-emerald-400" />
-        <span>DATABASE</span>
-        <span className="text-[10px] text-emerald-400/80">• MongoDB</span>
-      </motion.div>
-
-      {/* ============ 3D TILT BROWSER FRAME ============ */}
-      <motion.div
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-        }}
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.3 }}
-        onClick={onOpenCaseStudy}
-        data-cursor-text="CASE STUDY"
-        className={`relative w-full rounded-2xl overflow-hidden bg-slate-950 border transition-all duration-500 cursor-pointer shadow-2xl group ${
-          isHovered
-            ? "border-cyan-400/70 shadow-[0_25px_60px_rgba(6,182,212,0.25)]"
-            : "border-white/15 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
-        }`}
-      >
-        {/* Browser Top Navigation Bar */}
-        <div className="bg-slate-900/95 border-b border-white/10 px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
-          <div className="flex items-center gap-1.5 flex-shrink-0">
-            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-rose-500/90 shadow-sm" />
-            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-amber-500/90 shadow-sm" />
-            <span className="h-2.5 w-2.5 sm:h-3 sm:w-3 rounded-full bg-emerald-500/90 shadow-sm" />
-          </div>
-
-          <div className="flex-1 max-w-[280px] sm:max-w-[320px] bg-slate-950/90 border border-white/10 rounded-lg px-2.5 sm:px-3 py-1 flex items-center justify-between text-[11px] sm:text-xs font-mono text-slate-300 shadow-inner min-w-0">
-            <div className="flex items-center gap-1.5 min-w-0">
-              <Lock className="h-3 w-3 text-emerald-400 flex-shrink-0" />
-              <span className="truncate text-slate-200">{project.domain}</span>
-            </div>
-            <span className="text-[10px] text-slate-500 hidden sm:inline flex-shrink-0">SSL 256-bit</span>
-          </div>
-
-          <div className="flex items-center gap-1.5 sm:gap-2 text-slate-400 flex-shrink-0">
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              data-cursor-text="OPEN ↗"
-              title="Open Deployed Application"
-              className="p-1 rounded hover:bg-white/10 hover:text-cyan-300 transition-colors"
-            >
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-            <button
-              type="button"
-              onClick={(e) => {
-                e.stopPropagation();
-                onOpenCaseStudy();
-              }}
-              title="Expand Full Case Study"
-              className="p-1 rounded hover:bg-white/10 hover:text-cyan-300 transition-colors"
-            >
-              <Maximize2 className="h-3.5 w-3.5" />
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Inline Telemetry Strip (Visible only on mobile for clean UX) */}
-        <div className="sm:hidden bg-slate-900/90 border-b border-white/10 px-3 py-1.5 flex items-center justify-between text-[10px] font-mono">
-          <span className="flex items-center gap-1 text-emerald-400 font-bold">
-            <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            LIVE 200 OK
-          </span>
-          <span className="text-indigo-300 font-medium">JWT AUTH</span>
-          <span className="text-cyan-300 font-medium">EXPRESS REST</span>
-          <span className="text-emerald-300 font-medium">MONGODB</span>
-        </div>
-
-        {/* Browser Viewport Canvas */}
-        <div className="relative h-[270px] sm:h-[340px] w-full overflow-hidden bg-slate-950">
-          <BrowserMockupScreen project={project} />
-
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-slate-950/60 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center pointer-events-none p-4">
-            <div className="px-4 py-2 rounded-xl bg-cyan-600/90 text-white font-mono text-xs font-semibold flex items-center gap-2 shadow-xl border border-cyan-300/40 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 text-center">
-              <Eye className="h-3.5 w-3.5 text-white" />
-              <span>Tap / Click to Inspect Architectural Case Study</span>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
-  );
-}
-
-// Fullscreen Case Study Modal Component
-function CaseStudyModal({ project, isOpen, onClose }) {
-  const [activeTab, setActiveTab] = useState("overview");
+export function Projects() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    if (isOpen) {
-      document.body.style.overflow = "hidden";
-      window.addEventListener("keydown", handleKeyDown);
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [isOpen, onClose]);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
-  if (!isOpen || !project) return null;
-
-  return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 md:p-8">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 bg-black/85 backdrop-blur-md"
-        />
-
-        <motion.div
-          initial={{ opacity: 0, scale: 0.94, y: 25 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.94, y: 25 }}
-          transition={{ type: "spring", damping: 28, stiffness: 320 }}
-          className="relative w-full max-w-4xl max-h-[90vh] flex flex-col bg-slate-950 border border-cyan-500/30 rounded-3xl shadow-[0_25px_80px_rgba(0,0,0,0.95)] overflow-hidden z-10 text-left"
-        >
-          {/* Header */}
-          <div className="flex items-center justify-between px-5 sm:px-6 py-3.5 sm:py-4 border-b border-white/10 bg-slate-900/90">
-            <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-              <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-xl bg-gradient-to-br from-cyan-500 to-indigo-600 flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg flex-shrink-0">
-                {project.number}
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-base sm:text-xl font-bold text-white flex items-center gap-2 truncate">
-                  <span className="truncate">{project.title}</span>
-                  <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-300 font-mono font-normal flex-shrink-0">
-                    Case Study
-                  </span>
-                </h3>
-                <p className="text-[11px] sm:text-xs text-slate-400 font-mono truncate">{project.tagline}</p>
-              </div>
-            </div>
-
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 hover:text-white transition-colors flex-shrink-0"
-              aria-label="Close Case Study"
-            >
-              <X className="h-5 w-5" />
-            </button>
-          </div>
-
-          {/* Tab Navigation */}
-          <div className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-6 py-2.5 sm:py-3 border-b border-white/10 bg-slate-900/50 overflow-x-auto scrollbar-none">
-            {[
-              { id: "overview", label: "Overview", icon: Eye },
-              { id: "frontend", label: "Frontend", icon: Globe },
-              { id: "backend", label: "Backend", icon: Server },
-              { id: "database", label: "Database", icon: Database },
-            ].map((tab) => {
-              const Icon = tab.icon;
-              const isActive = activeTab === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`px-3 sm:px-4 py-1.5 rounded-xl text-xs font-mono font-medium flex items-center gap-1.5 transition-all flex-shrink-0 ${
-                    isActive
-                      ? "bg-cyan-500/20 text-cyan-300 border border-cyan-400/40 shadow-sm"
-                      : "text-slate-400 hover:text-slate-200 hover:bg-white/5"
-                  }`}
-                >
-                  <Icon className="h-3.5 w-3.5" />
-                  <span>{tab.label}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Modal Body Content */}
-          <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-6 text-xs sm:text-sm">
-            {activeTab === "overview" && (
-              <div className="space-y-5">
-                <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-cyan-400 mb-2 font-semibold">
-                    The Problem Space
-                  </h4>
-                  <p className="text-slate-300 leading-relaxed bg-slate-900/60 border border-white/10 p-4 rounded-2xl">
-                    {project.caseStudy.problem}
-                  </p>
-                </div>
-
-                <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-emerald-400 mb-2 font-semibold">
-                    The Engineered Solution
-                  </h4>
-                  <p className="text-slate-300 leading-relaxed bg-slate-900/60 border border-white/10 p-4 rounded-2xl">
-                    {project.caseStudy.solution}
-                  </p>
-                </div>
-
-                {/* Key Verified Metrics */}
-                <div>
-                  <h4 className="font-mono text-xs uppercase tracking-wider text-slate-400 mb-2.5 font-semibold">
-                    Engineering Metrics:
-                  </h4>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                    {project.caseStudy.metrics.map((m, i) => (
-                      <div key={i} className="bg-slate-900/80 border border-white/10 rounded-xl p-3 text-center">
-                        <span className="text-lg sm:text-xl font-extrabold text-cyan-400 font-mono block">
-                          {m.value}
-                        </span>
-                        <span className="text-[10.5px] text-slate-400 font-mono mt-0.5 block">{m.label}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "frontend" && (
-              <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-cyan-400" />
-                    Frontend Architecture & UI Engineering
-                  </h4>
-                  <p className="text-slate-300 leading-relaxed">{project.caseStudy.frontend}</p>
-                </div>
-
-                <div>
-                  <h5 className="text-xs font-mono text-slate-400 mb-2 uppercase">Key Interface Features:</h5>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {project.features.map((feat, i) => (
-                      <div key={i} className="bg-slate-900/60 border border-white/10 rounded-xl p-3 flex items-center gap-2 text-xs text-slate-200">
-                        <Check className="h-4 w-4 text-cyan-400 flex-shrink-0" />
-                        <span>{feat}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "backend" && (
-              <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <Server className="h-4 w-4 text-indigo-400" />
-                    RESTful API & Express Controller Design
-                  </h4>
-                  <p className="text-slate-300 leading-relaxed">{project.caseStudy.backend}</p>
-                </div>
-
-                <div className="bg-indigo-950/30 border border-indigo-500/30 rounded-2xl p-4 flex items-center gap-3">
-                  <ShieldCheck className="h-6 w-6 text-indigo-400 flex-shrink-0" />
-                  <div>
-                    <h5 className="text-xs font-bold text-white font-mono">Authentication Protocol</h5>
-                    <p className="text-xs text-indigo-200">{project.authHighlight}</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {activeTab === "database" && (
-              <div className="space-y-4">
-                <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4 sm:p-5">
-                  <h4 className="text-sm sm:text-base font-bold text-white mb-2 flex items-center gap-2">
-                    <Database className="h-4 w-4 text-emerald-400" />
-                    Data Modeling, Indexing & Cloud Deployment
-                  </h4>
-                  <p className="text-slate-300 leading-relaxed">{project.caseStudy.database}</p>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4">
-                    <p className="text-xs font-mono text-slate-400 mb-1">Database Provider</p>
-                    <p className="text-base font-bold text-emerald-400">MongoDB Atlas Cluster</p>
-                    <p className="text-xs text-slate-400 mt-1">Mongoose ODM with index optimization</p>
-                  </div>
-                  <div className="bg-slate-900/80 border border-white/10 rounded-2xl p-4">
-                    <p className="text-xs font-mono text-slate-400 mb-1">Production Hosting</p>
-                    <p className="text-base font-bold text-cyan-400">Netlify CDN + Node Server</p>
-                    <p className="text-xs text-slate-400 mt-1">Continuous Integration & Automated Builds</p>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Footer Action Buttons */}
-          <div className="px-5 sm:px-6 py-3.5 sm:py-4 border-t border-white/10 bg-slate-900/90 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex flex-wrap items-center gap-2">
-              <a
-                href={project.githubFrontend}
-                target="_blank"
-                rel="noreferrer"
-                data-cursor-text="CODE"
-                className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
-              >
-                <GithubIcon className="h-3.5 w-3.5" />
-                <span>Frontend Repo</span>
-              </a>
-
-              {project.githubBackend && (
-                <a
-                  href={project.githubBackend}
-                  target="_blank"
-                  rel="noreferrer"
-                  data-cursor-text="CODE"
-                  className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-medium text-slate-200 hover:text-white transition-all shadow-sm"
-                >
-                  <Server className="h-3.5 w-3.5 text-indigo-400" />
-                  <span>Backend Repo</span>
-                </a>
-              )}
-            </div>
-
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noreferrer"
-              data-cursor-text="OPEN ↗"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:brightness-110 text-white text-xs font-semibold shadow-lg shadow-cyan-500/25 transition-all"
-            >
-              <Globe className="h-3.5 w-3.5" />
-              <span>Launch Live Application</span>
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </AnimatePresence>
-  );
-}
-
-export function Projects() {
-  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
-  const [activeHoverKey, setActiveHoverKey] = useState(null);
-  const [selectedCaseStudy, setSelectedCaseStudy] = useState(null);
-
-  const activeProject = projects[activeSceneIndex];
-
-  const handleNextScene = () => {
-    setActiveSceneIndex((prev) => (prev + 1) % projects.length);
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
 
-  const handlePrevScene = () => {
-    setActiveSceneIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  // Keyboard arrow navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "ArrowRight") handleNext();
+      if (e.key === "ArrowLeft") handlePrev();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Spatial Fan-Out Transform: Center, Left, Right, and Back
+  const getCardTransform = (index) => {
+    const diff = (index - currentIndex + projects.length) % projects.length;
+
+    // Center Active Card (Front & Sharp)
+    if (diff === 0) {
+      return {
+        zIndex: 40,
+        x: 0,
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        pointerEvents: "auto",
+      };
+    }
+
+    // Right Card (Peeking to the Right)
+    if (diff === 1) {
+      return {
+        zIndex: 30,
+        x: isMobile ? 48 : 135,
+        y: isMobile ? -8 : -14,
+        scale: isMobile ? 0.92 : 0.92,
+        opacity: 0.62,
+        pointerEvents: "auto",
+      };
+    }
+
+    // Left Card (Peeking to the Left)
+    if (diff === projects.length - 1) {
+      return {
+        zIndex: 30,
+        x: isMobile ? -48 : -135,
+        y: isMobile ? -8 : -14,
+        scale: isMobile ? 0.92 : 0.92,
+        opacity: 0.62,
+        pointerEvents: "auto",
+      };
+    }
+
+    // Back Card (Tucked Behind Center)
+    return {
+      zIndex: 15,
+      x: 0,
+      y: isMobile ? -24 : -36,
+      scale: isMobile ? 0.84 : 0.84,
+      opacity: 0.25,
+      pointerEvents: "auto",
+    };
   };
 
   return (
     <section
       id="projects"
-      className="py-24 sm:py-32 relative overflow-hidden bg-gradient-to-b from-[#040816] via-[#020914] to-[#040816] text-white select-none"
+      className="py-12 sm:py-16 relative overflow-hidden bg-slate-950 border-t border-white/10 select-none"
     >
-      {/* Background Orbital Telemetry & Cyan Radar Atmosphere */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="absolute inset-0 bg-radar-grid opacity-70" />
-        <motion.div
-          key={activeProject.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-1/4 left-1/3 w-[350px] sm:w-[600px] h-[350px] sm:h-[600px] rounded-full blur-[110px] sm:blur-[140px] -z-10"
-          style={{ background: activeProject.accentGlow }}
-        />
-        <div className="absolute bottom-1/4 right-1/4 w-[300px] sm:w-[500px] h-[300px] sm:h-[500px] bg-sky-600/10 rounded-full blur-[100px] sm:blur-[130px]" />
+      {/* Subtle ambient lighting */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-600/10 rounded-full blur-[140px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-[140px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 relative z-10 space-y-10 sm:space-y-12">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="max-w-4xl text-left"
-        >
-          {/* Section Label: 03 / SELECTED WORK */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-mono text-xs mb-4 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
-            <Rocket className="h-3.5 w-3.5 text-cyan-400 animate-pulse" />
-            <span>03 // SELECTED WORK • PRODUCTION LAB</span>
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 relative z-10">
+        {/* ================= SECTION HEADER ================= */}
+        <div className="text-center max-w-2xl mx-auto mb-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 mb-2.5">
+            <Sparkles className="h-3.5 w-3.5 text-indigo-400 animate-pulse" />
+            <span className="font-mono text-xs text-indigo-300 font-semibold tracking-wider">
+              04 // FEATURED APPLICATIONS
+            </span>
           </div>
 
-          <h2 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[0.95] uppercase">
-            Things I've{" "}
-            <span className="bg-gradient-to-r from-cyan-400 via-sky-300 to-indigo-400 bg-clip-text text-transparent">
-              built.
-            </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+            Things I've <span className="text-indigo-400">Built.</span>
           </h2>
-
-          <p className="mt-4 text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl font-normal">
-            Scroll-driven case study scenes highlighting end-to-end full-stack architectures, live token authorization, verified REST pipelines, and production deployments.
+          <p className="mt-1.5 text-xs sm:text-sm text-slate-400 font-sans">
+            Interactive 3D showcase — explore production Full Stack & AI applications.
           </p>
-        </motion.div>
-
-        {/* ============ MISSION CONTROL SCENE TIMELINE DOCK (Smooth Mobile Scrubber) ============ */}
-        <div className="flex items-center justify-between gap-3 border-b border-white/10 pb-4">
-          <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1 max-w-full">
-            {projects.map((proj, idx) => {
-              const isSelected = activeSceneIndex === idx;
-              return (
-                <button
-                  key={proj.id}
-                  onClick={() => setActiveSceneIndex(idx)}
-                  className={`relative px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-2xl text-xs sm:text-sm font-mono transition-all duration-300 flex items-center gap-2 flex-shrink-0 ${
-                    isSelected
-                      ? "text-white font-bold shadow-lg shadow-cyan-500/25 border border-cyan-400/40"
-                      : "bg-slate-900/80 text-slate-400 hover:text-slate-200 border border-white/10 hover:border-cyan-500/30"
-                  }`}
-                >
-                  {isSelected && (
-                    <motion.div
-                      layoutId="activeSceneTimeline"
-                      className="absolute inset-0 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 rounded-2xl -z-10"
-                      transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                    />
-                  )}
-                  <span className="font-bold text-cyan-300">{proj.number}</span>
-                  <span className="truncate">{proj.title.split(" ")[0]}</span>
-                  {isSelected && (
-                    <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                  )}
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Quick Arrow Switchers */}
-          <div className="hidden sm:flex items-center gap-1.5 flex-shrink-0">
-            <button
-              onClick={handlePrevScene}
-              aria-label="Previous Project"
-              className="p-2 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <span className="font-mono text-xs text-slate-400 px-1">
-              0{activeSceneIndex + 1} / 0{projects.length}
-            </span>
-            <button
-              onClick={handleNextScene}
-              aria-label="Next Project"
-              className="p-2 rounded-xl bg-slate-900/80 border border-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-white transition-all"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
         </div>
 
-        {/* ============ CINEMATIC PRODUCTION LAB SCENE ============ */}
-        <div className="relative rounded-3xl border border-white/15 bg-slate-950/80 backdrop-blur-2xl p-4 sm:p-8 lg:p-10 shadow-[0_20px_60px_rgba(0,0,0,0.9)] overflow-hidden">
-          {/* Top Scene Controls Header */}
-          <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6 sm:mb-8">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <span className="px-2.5 sm:px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 font-mono text-[11px] sm:text-xs font-semibold">
-                SCENE {activeProject.number} / {activeProject.total}
-              </span>
-              <span className="text-[11px] sm:text-xs text-slate-400 font-mono hidden sm:inline">
-                {activeProject.badge}
-              </span>
-            </div>
+        {/* ================= 3D FAN-OUT CAROUSEL ================= */}
+        {/* Center card in front, background cards peeking to the left and right */}
+        <div className="relative h-[555px] sm:h-[515px] w-full flex items-center justify-center pt-6">
+          {projects.map((project, index) => {
+            const isFront = index === currentIndex;
+            const cardStyles = getCardTransform(index);
 
-            {/* Mobile Prev / Next Buttons */}
-            <div className="flex items-center gap-1 sm:hidden">
-              <button
-                onClick={handlePrevScene}
-                aria-label="Previous Project"
-                className="p-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-slate-300"
+            return (
+              <motion.div
+                key={project.id}
+                animate={cardStyles}
+                transition={{
+                  type: "spring",
+                  stiffness: 300,
+                  damping: 30,
+                  mass: 0.8,
+                }}
+                onClick={() => {
+                  if (!isFront) setCurrentIndex(index);
+                }}
+                className={`absolute w-full max-w-2xl sm:max-w-3xl cursor-pointer will-change-transform ${
+                  !isFront ? "select-none" : ""
+                }`}
               >
-                <ChevronLeft className="h-3.5 w-3.5" />
-              </button>
-              <span className="font-mono text-[10px] text-slate-400 px-1">
-                {activeSceneIndex + 1}/{projects.length}
-              </span>
-              <button
-                onClick={handleNextScene}
-                aria-label="Next Project"
-                className="p-1.5 rounded-lg bg-slate-900/90 border border-white/10 text-slate-300"
-              >
-                <ChevronRight className="h-3.5 w-3.5" />
-              </button>
-            </div>
-          </div>
+                <article className="group relative flex flex-col rounded-2xl sm:rounded-3xl bg-slate-900/95 border border-white/10 hover:border-white/25 shadow-[0_20px_50px_rgba(0,0,0,0.75)] overflow-hidden transition-all duration-200">
+                  {/* Frosted depth overlay for background cards */}
+                  {!isFront && (
+                    <div className="absolute inset-0 bg-slate-950/40 backdrop-blur-[2px] z-20 pointer-events-none transition-opacity duration-200" />
+                  )}
 
-          {/* Scene Transition Area */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeProject.id}
-              initial={{ opacity: 0, scale: 0.96, y: 15 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: -15 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
-            >
-              {/* ============ LEFT COLUMN: Project Details & Data Flow Pipeline ============ */}
-              <div className="lg:col-span-6 flex flex-col text-left space-y-4 sm:space-y-5">
-                {/* Project Number & Badge */}
-                <div className="flex items-center gap-2">
-                  <span className="font-mono text-3xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-400">
-                    {activeProject.number}
-                  </span>
-                  <span className="text-slate-500 font-mono text-lg sm:text-xl">/ {activeProject.total}</span>
-                  <span className="ml-2 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-0.5 rounded-full text-[11px] sm:text-xs font-semibold bg-white/5 border border-white/10 text-slate-200">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                    {activeProject.badge}
-                  </span>
-                </div>
+                  {/* Ambient Glow */}
+                  <div
+                    className={`pointer-events-none absolute -inset-1 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-2xl bg-gradient-to-br ${project.bgGradient}`}
+                  />
 
-                {/* Title & Tagline */}
-                <div>
-                  <h3 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
-                    {activeProject.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm font-mono text-cyan-300 mt-1">{activeProject.tagline}</p>
-                </div>
+                  {/* Window Chrome Header */}
+                  <div className="px-4 py-2 bg-slate-950/90 border-b border-white/10 flex items-center justify-between">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80 inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block" />
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
+                    </div>
 
-                {/* Auth & Security Highlight Pill */}
-                {activeProject.authHighlight && (
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-indigo-500/15 border border-indigo-500/30 text-indigo-200 text-xs font-medium self-start backdrop-blur-sm">
-                    <ShieldCheck className="h-4 w-4 text-indigo-400 flex-shrink-0" />
-                    <span>{activeProject.authHighlight}</span>
-                  </div>
-                )}
+                    <div className="flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-slate-900 border border-white/10 text-[10px] font-mono text-slate-400">
+                      <Lock className="h-2.5 w-2.5 text-emerald-400" />
+                      <span className="truncate max-w-[200px]">{project.slug}</span>
+                    </div>
 
-                {/* Description */}
-                <p className="text-slate-300 text-xs sm:text-sm leading-relaxed font-normal">
-                  {activeProject.description}
-                </p>
-
-                {/* ============ ARCHITECTURE DATA FLOW PIPELINE ============ */}
-                <div className="bg-slate-900/90 border border-white/10 rounded-2xl p-3 sm:p-4 space-y-2">
-                  <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-slate-400">
-                    <span className="flex items-center gap-1.5 text-cyan-300 font-bold">
-                      <Layers className="h-3.5 w-3.5 text-cyan-400" />
-                      Pipeline Architecture Flow
-                    </span>
-                    <span className="text-[10px] text-slate-500 hidden sm:inline">
-                      Hover step to inspect
-                    </span>
+                    <div className="flex items-center gap-2">
+                      <span className="font-mono text-xs text-indigo-400 font-bold">
+                        {project.badge}
+                      </span>
+                      <span className="font-mono text-xs text-slate-500">
+                        {project.indexNum}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Flow Nodes Pipeline */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
-                    {activeProject.pipeline.map((step, idx) => {
-                      const isHovered = activeHoverKey === step.key || activeHoverKey === step.step;
-                      return (
-                        <div
-                          key={idx}
-                          onMouseEnter={() => setActiveHoverKey(step.key)}
-                          onMouseLeave={() => setActiveHoverKey(null)}
-                          onClick={() => setActiveHoverKey(activeHoverKey === step.key ? null : step.key)}
-                          className={`p-2 sm:p-2.5 rounded-xl border transition-all cursor-pointer ${
-                            isHovered
-                              ? "bg-cyan-500/20 border-cyan-400 shadow-md shadow-cyan-500/20 text-white"
-                              : "bg-slate-950/70 border-white/10 text-slate-300 hover:border-white/20"
-                          }`}
+                  {/* Card Content */}
+                  <div className="p-5 sm:p-7 flex flex-col relative z-10">
+                    {/* Top Row: Title + Status + Highlight */}
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                      <div className="flex items-center gap-2.5">
+                        <span className="text-3xl filter drop-shadow-md">{project.emoji}</span>
+                        <h3
+                          className={`text-xl sm:text-2xl font-bold bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent tracking-tight`}
                         >
-                          <div className="flex items-center justify-between mb-1 text-[8.5px] sm:text-[9px] font-mono">
-                            <span className="text-cyan-400 font-bold">{step.step}</span>
-                            <span className="text-slate-500">0{idx + 1}</span>
-                          </div>
-                          <p className="text-[10.5px] sm:text-[11px] font-bold text-white leading-tight truncate">
-                            {step.label}
-                          </p>
-                          <p className="text-[8.5px] sm:text-[9px] text-slate-400 truncate mt-0.5">{step.sub}</p>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
+                          {project.title}
+                        </h3>
+                      </div>
 
-                {/* ============ TECHNOLOGY STACK PILLS ============ */}
-                <div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-2">
-                    Verified Production Stack:
-                  </div>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                    {activeProject.stack.map((tech) => {
-                      const isHovered = activeHoverKey === tech;
-                      return (
-                        <button
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-slate-300 text-xs font-mono self-start sm:self-auto">
+                        <Activity className="h-3 w-3 text-indigo-400 flex-shrink-0" />
+                        <span>{project.highlight}</span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="mt-3">
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans">
+                        {project.description}
+                      </p>
+
+                      {/* Admin Credentials Badge */}
+                      {project.adminCredentials && (
+                        <div className="mt-2.5 inline-flex flex-wrap items-center gap-x-2.5 gap-y-1.5 px-3 py-1.5 rounded-xl bg-amber-500/10 border border-amber-500/25 text-xs font-mono">
+                          <span className="inline-flex items-center gap-1.5 font-semibold text-amber-400">
+                            <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
+                            Admin Access:
+                          </span>
+                          <span className="text-slate-300">
+                            User ID: <span className="text-white font-bold select-all bg-black/40 px-1.5 py-0.5 rounded border border-white/10">{project.adminCredentials.email}</span>
+                          </span>
+                          <span className="text-amber-500/40 hidden sm:inline">•</span>
+                          <span className="text-slate-300">
+                            Password: <span className="text-amber-300 font-bold select-all bg-black/40 px-1.5 py-0.5 rounded border border-white/10">{project.adminCredentials.password}</span>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* 4 Feature Bullets (Single Column Layout) */}
+                    <div className="mt-3.5 flex flex-col space-y-2 pt-3 border-t border-white/10">
+                      {project.features.map((feature, i) => (
+                        <div key={i} className="flex items-center gap-2.5 text-xs sm:text-[13px] text-slate-300">
+                          <div
+                            className={`h-4 w-4 rounded-full bg-gradient-to-br ${project.gradient} flex items-center justify-center flex-shrink-0 shadow-sm`}
+                          >
+                            <Check className="h-2.5 w-2.5 text-white" />
+                          </div>
+                          <span>{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Tech Stack Chips */}
+                    <div className="mt-4 flex flex-wrap gap-1.5">
+                      {project.stack.map((tech) => (
+                        <span
                           key={tech}
-                          onMouseEnter={() => setActiveHoverKey(tech)}
-                          onMouseLeave={() => setActiveHoverKey(null)}
-                          onClick={() => setActiveHoverKey(activeHoverKey === tech ? null : tech)}
-                          className={`px-2.5 sm:px-3 py-1 rounded-xl text-[11px] sm:text-xs font-mono font-medium border transition-all duration-200 ${
-                            isHovered
-                              ? "bg-cyan-500/25 border-cyan-400 text-white shadow-lg shadow-cyan-500/30 scale-105"
-                              : "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:border-white/25"
-                          }`}
+                          className="px-2.5 py-1 rounded-lg text-[11px] font-mono font-medium bg-white/5 text-slate-300 border border-white/10"
                         >
                           {tech}
-                        </button>
-                      );
-                    })}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="mt-5 pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center gap-2.5">
+                      {/* Repositories */}
+                      {project.githubBackend ? (
+                        <div className="grid grid-cols-2 gap-2 w-full sm:w-auto sm:flex-1">
+                          <a
+                            href={project.githubFrontend}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white transition-all shadow-sm"
+                            title="Frontend Source Code"
+                          >
+                            <GithubIcon className="h-3.5 w-3.5" />
+                            <span>Frontend</span>
+                          </a>
+
+                          <a
+                            href={project.githubBackend}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="inline-flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white transition-all shadow-sm"
+                            title="Backend Source Code"
+                          >
+                            <Server className="h-3.5 w-3.5 text-indigo-400" />
+                            <span>Backend</span>
+                          </a>
+                        </div>
+                      ) : (
+                        <a
+                          href={project.githubFrontend}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full sm:w-auto sm:flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-slate-200 hover:text-white transition-all shadow-sm"
+                          title="Source Code (GitHub)"
+                        >
+                          <GithubIcon className="h-4 w-4" />
+                          <span>Source Code (GitHub)</span>
+                        </a>
+                      )}
+
+                      {/* Admin Panel Link (if available) */}
+                      {project.adminDemo && (
+                        <a
+                          href={project.adminDemo}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 py-2.5 px-3.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 hover:text-amber-200 text-xs font-mono font-semibold shadow-sm hover:scale-[1.02] transition-all"
+                          title={
+                            project.adminCredentials
+                              ? `Admin Dashboard (ID: ${project.adminCredentials.email} | PW: ${project.adminCredentials.password})`
+                              : "Admin Dashboard Portal"
+                          }
+                        >
+                          <ShieldCheck className="h-3.5 w-3.5 text-amber-400" />
+                          <span>Admin Panel</span>
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+
+                      {/* Live Demo Trigger Button */}
+                      <a
+                        href={project.demo}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={`w-full sm:w-auto sm:min-w-[190px] inline-flex items-center justify-center gap-2 py-2.5 px-5 rounded-xl bg-gradient-to-r ${project.gradient} text-white text-xs sm:text-sm font-bold shadow-lg hover:brightness-110 hover:scale-[1.02] transition-all`}
+                      >
+                        <Eye className="h-4 w-4" />
+                        <span>Launch Live Demo</span>
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
                   </div>
-                </div>
-
-                {/* ============ ACTION BUTTONS (Clean, Responsive, No Cut-Offs) ============ */}
-                <div className="pt-2 flex flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-3">
-                  {/* Case Study Trigger */}
-                  <button
-                    onClick={() => setSelectedCaseStudy(activeProject)}
-                    data-cursor-text="CASE STUDY"
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-semibold shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:brightness-110 active:scale-95 transition-all min-h-[44px]"
-                  >
-                    <Eye className="h-4 w-4" />
-                    <span>Explore Case Study</span>
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
-
-                  {/* Live URL */}
-                  <a
-                    href={activeProject.demo}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor-text="OPEN ↗"
-                    className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
-                  >
-                    <Globe className="h-4 w-4 text-cyan-400" />
-                    <span>Live Demo</span>
-                    <ArrowUpRight className="h-3.5 w-3.5 text-slate-400" />
-                  </a>
-
-                  {/* Frontend GitHub */}
-                  <a
-                    href={activeProject.githubFrontend}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor-text="CODE"
-                    className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
-                    title="Frontend Source Code (GitHub)"
-                  >
-                    <GithubIcon className="h-4 w-4" />
-                    <span>Frontend</span>
-                  </a>
-
-                  {/* Backend GitHub if available */}
-                  {activeProject.githubBackend && (
-                    <a
-                      href={activeProject.githubBackend}
-                      target="_blank"
-                      rel="noreferrer"
-                      data-cursor-text="CODE"
-                      className="inline-flex items-center justify-center gap-2 px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-slate-200 hover:text-white text-xs sm:text-sm font-medium shadow-sm transition-all min-h-[44px]"
-                      title="Backend Source Code (GitHub)"
-                    >
-                      <Server className="h-4 w-4 text-indigo-400" />
-                      <span>Backend</span>
-                    </a>
-                  )}
-                </div>
-              </div>
-
-              {/* ============ RIGHT COLUMN: 3D Tilt Browser Mockup ============ */}
-              <div className="lg:col-span-6 flex flex-col items-center justify-center w-full">
-                <BrowserSceneMockup
-                  project={activeProject}
-                  activeHoverKey={activeHoverKey}
-                  onOpenCaseStudy={() => setSelectedCaseStudy(activeProject)}
-                />
-
-                {/* Sub-browser Hint */}
-                <div className="mt-2 sm:mt-3 flex items-center gap-2 text-[11px] sm:text-xs font-mono text-slate-400">
-                  <span className="h-2 w-2 rounded-full bg-cyan-400 animate-ping" />
-                  <span>Tap or click frame to inspect architectural case study</span>
-                </div>
-              </div>
-            </motion.div>
-          </AnimatePresence>
+                </article>
+              </motion.div>
+            );
+          })}
         </div>
 
-        {/* Bottom All Repositories Link */}
-        <div className="text-center pt-2">
+        {/* ================= STACK NAVIGATION CONTROLS ================= */}
+        {/* Next & Previous Buttons + Progress Dots */}
+        <div className="mt-4 flex items-center justify-between gap-4 max-w-2xl sm:max-w-3xl mx-auto pt-2">
+          {/* Previous Button */}
+          <button
+            onClick={handlePrev}
+            className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-white/10 hover:border-white/20 text-slate-300 hover:text-white font-mono text-xs font-semibold shadow-lg transition-all active:scale-95"
+          >
+            <ChevronLeft className="h-4 w-4" />
+            <span>Previous</span>
+          </button>
+
+          {/* Center Indicator Dots */}
+          <div className="flex items-center gap-2">
+            {projects.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => setCurrentIndex(idx)}
+                className={`h-2 rounded-full transition-all duration-300 ${
+                  currentIndex === idx
+                    ? "w-8 bg-indigo-500 shadow-[0_0_10px_rgba(99,102,241,0.6)]"
+                    : "w-2 bg-white/20 hover:bg-white/40"
+                }`}
+                aria-label={`Go to project ${idx + 1}`}
+              />
+            ))}
+            <span className="font-mono text-xs text-slate-400 ml-2">
+              0{currentIndex + 1} / 0{projects.length}
+            </span>
+          </div>
+
+          {/* Next Button (Highlighted) */}
+          <button
+            onClick={handleNext}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-110 text-white font-mono text-xs font-bold shadow-lg shadow-indigo-500/25 transition-all active:scale-95"
+          >
+            <span>Next Project</span>
+            <ChevronRight className="h-4 w-4" />
+          </button>
+        </div>
+
+        {/* ================= SUBTLE GITHUB FOOTER ================= */}
+        <div className="mt-8 text-center">
           <a
             href="https://github.com/anuruddh123"
             target="_blank"
             rel="noreferrer"
-            data-cursor-text="GITHUB ↗"
-            className="inline-flex items-center gap-2.5 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-semibold transition-all shadow-lg bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/40 text-indigo-200 hover:text-white"
+            className="inline-flex items-center gap-2 text-xs font-mono text-slate-400 hover:text-indigo-300 transition-colors"
           >
-            <GithubIcon className="h-4 w-4" />
-            <span>Explore All Repositories on GitHub (anuruddh123)</span>
-            <ExternalLink className="h-3.5 w-3.5" />
+            <GithubIcon className="h-3.5 w-3.5" />
+            <span>Explore all repositories & codebases on GitHub (anuruddh123) ↗</span>
           </a>
         </div>
       </div>
-
-      {/* Fullscreen Case Study Modal */}
-      <CaseStudyModal
-        project={selectedCaseStudy}
-        isOpen={Boolean(selectedCaseStudy)}
-        onClose={() => setSelectedCaseStudy(null)}
-      />
     </section>
   );
 }
