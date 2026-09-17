@@ -131,8 +131,8 @@ export function Hero() {
             </a>
 
             <a
-              href="/T_anuruddh_resume.pdf"
-              download="T_anuruddh_resume.pdf"
+              href="/T_Anuruddh_resume.pdf"
+              download="T_Anuruddh_resume.pdf"
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-sm text-slate-200 text-sm font-semibold transition-all hover:scale-105"
